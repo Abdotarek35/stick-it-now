@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لوحة التكتيكات | فانتازي وتكتيكات eFootball</title>
+<meta name="description" content="كابتن الجولة وبيانات مباشرة من Fantasy Premier League، وخطط ملعب eFootball 2027 — كل حاجة تحتاجها قبل الماتش في مكان واحد.">
+<meta property="og:title" content="لوحة التكتيكات | فانتازي وتكتيكات eFootball">
+<meta property="og:description" content="كابتن الجولة وبيانات مباشرة من Fantasy Premier League، وخطط ملعب eFootball 2027 في مكان واحد.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="لوحة التكتيكات">
+<meta name="twitter:description" content="فانتازي مباشر + تكتيكات eFootball 2027">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230A1F1A'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23F2B807' stroke-width='2.5'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23F2B807'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lalezar&family=Tajawal:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+<!-- Cloudflare Web Analytics: paste the snippet from your dashboard here (see chat for steps) -->
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ===== HERO ===== -->
+  <header class="hero">
+    <div class="hero-top-row">
+      <span class="hero-eyebrow"><span class="dot"></span> <span id="gwLabel">جاري الاتصال ببيانات FPL المباشرة...</span></span>
+      <button class="lang-toggle" onclick="toggleLanguage()" aria-label="Change language">🌐 <span id="langToggleLabel">English</span></button>
+    </div>
+    <h1><span data-ar="لوحة التكتيكات" data-en="Tactics Board">لوحة التكتيكات</span><br><span class="hero-accent" data-ar="خطّتك قبل الصافرة" data-en="Your plan before kickoff">خطّتك قبل الصافرة</span></h1>
+    <p data-ar="فانتازي مباشر من Fantasy Premier League، وخطط ملعب eFootball — كل حاجة تحتاجها قبل الماتش." data-en="Live Fantasy Premier League picks, plus eFootball match tactics — everything you need before kickoff.">فانتازي مباشر من Fantasy Premier League، وخطط ملعب eFootball — كل حاجة تحتاجها قبل الماتش.</p>
+    <div class="hero-counts">
+      <span class="stat-pill"><span data-ar="قوائم فانتازي" data-en="Fantasy lists">قوائم فانتازي</span> <b class="mono">06</b></span>
+      <span class="stat-pill"><span data-ar="أنظمة" data-en="Formations">أنظمة</span> <b class="mono">05</b></span>
+      <span class="stat-pill"><span data-ar="تكتيكات" data-en="Tactics">تكتيكات</span> <b class="mono">05</b></span>
+    </div>
+    <svg class="pitch-svg" viewBox="0 0 600 220" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <rect class="line-strong" x="8" y="8" width="584" height="204" rx="10"/>
+      <line class="line" x1="300" y1="8" x2="300" y2="212"/>
+      <circle class="line" cx="300" cy="110" r="42"/>
+      <rect class="line" x="8" y="55" width="70" height="110"/><rect class="line" x="8" y="80" width="28" height="60"/>
+      <rect class="line" x="522" y="55" width="70" height="110"/><rect class="line" x="564" y="80" width="28" height="60"/>
+      <path class="arrow arrow-gold" d="M300,150 C 380,150 420,90 470,72"/>
+      <path class="arrow arrow-red" d="M300,150 C 220,150 180,95 130,78"/>
+      <circle class="node node-gold" cx="470" cy="72" r="6"/>
+      <circle class="node node-red" cx="130" cy="78" r="6"/>
+    </svg>
+  </header>
+
+  <!-- ===== MAIN TABS ===== -->
+  <div class="tab-rail" role="tablist">
+    <span class="tab-indicator" id="tabIndicator" aria-hidden="true"></span>
+    <button class="tab-btn active" id="tabbtn-home" role="tab" aria-selected="true" aria-controls="home" onclick="switchTab('home', this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-9 9 9"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg>
+      <span data-ar="النهاردة" data-en="Today">النهاردة</span>
+    </button>
+    <button class="tab-btn" id="tabbtn-fantasy" role="tab" aria-selected="false" aria-controls="fantasy" onclick="switchTab('fantasy', this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3v6l5 3-2 6-3-2-3 2-2-6 5-3V3"/></svg>
+      <span data-ar="فانتازي" data-en="Fantasy">فانتازي</span>
+    </button>
+    <button class="tab-btn" id="tabbtn-playbook" role="tab" aria-selected="false" aria-controls="playbook" onclick="switchTab('playbook', this)">
+      <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><circle cx="12" cy="4" r="1.7"/><circle cx="6" cy="12" r="1.7"/><circle cx="18" cy="12" r="1.7"/><circle cx="9" cy="20" r="1.7"/><circle cx="15" cy="20" r="1.7"/></svg>
+      <span data-ar="الأنظمة والتكتيكات" data-en="Systems &amp; Tactics">الأنظمة والتكتيكات</span>
+    </button>
+  </div>
+
+  <!-- ===== HOME / TODAY (default landing screen) ===== -->
+  <div id="home" class="tab-content active">
+    <div id="homeContent">
+      <div class="skeleton-card"><div class="skeleton-bar w40"></div><div class="skeleton-bar w70"></div><div class="skeleton-bar w90"></div></div>
+    </div>
+  </div>
+
+  <!-- ===== FANTASY TAB (LIVE, MULTI-LIST) ===== -->
+  <div id="fantasy" class="tab-content">
+    <div class="section-label"><h2 id="fantasyHeading">مرشّحو الكابتنية</h2><span class="mono" id="fantasyHeadingTag">FPL PICKS</span></div>
+    <div class="data-bar">
+      <span class="data-bar-left">
+        <span class="data-bar-status" id="lastUpdated">بيانات مباشرة — جاري التحميل</span>
+        <span class="source-badge" id="sourceBadge" style="display:none;"></span>
+      </span>
+      <button class="refresh-btn spinning" id="refreshBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg>
+        <span data-ar="تحديث" data-en="Refresh">تحديث</span>
+      </button>
+    </div>
+
+    <div class="search-box">
+      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input type="text" id="playerSearchInput" class="search-input" data-ar-placeholder="دور على أي لاعب في الدوري..." data-en-placeholder="Search any player in the league..." placeholder="دور على أي لاعب في الدوري..." oninput="handlePlayerSearch(this.value)">
+      <button class="search-clear-btn" id="searchClearBtn" onclick="clearSearch()" style="display:none;" aria-label="Clear search">✕</button>
+    </div>
+    <div class="leaderboard" id="searchResults" style="display:none;"></div>
+
+    <div id="fplNormalViews">
+      <div class="fpl-groups" id="fplGroups">
+        <button class="group-tab active" data-group="prep" onclick="switchFplGroup('prep', this)"><span data-ar="🎯 تحضير الجولة" data-en="🎯 Gameweek Prep">🎯 تحضير الجولة</span></button>
+        <button class="group-tab" data-group="rankings" onclick="switchFplGroup('rankings', this)"><span data-ar="📊 الترتيبات" data-en="📊 Rankings">📊 الترتيبات</span></button>
+        <button class="group-tab" data-group="mytools" onclick="switchFplGroup('mytools', this)"><span data-ar="🧢 أدواتي" data-en="🧢 My Tools">🧢 أدواتي</span></button>
+      </div>
+
+      <div class="fpl-subnav" id="fplSubnav">
+        <button class="chip active" data-view="captain" data-group="prep" onclick="switchFplView('captain', this)" data-ar="👑 الكابتن" data-en="👑 Captain">👑 الكابتن</button>
+        <button class="chip" data-view="clean" data-group="prep" onclick="switchFplView('clean', this)" data-ar="🛡️ نظافة الشباك" data-en="🛡️ Clean Sheets">🛡️ نظافة الشباك</button>
+        <button class="chip" data-view="injury" data-group="prep" onclick="switchFplView('injury', this)" data-ar="🚑 مراقبة الإصابات" data-en="🚑 Injury Watch">🚑 مراقبة الإصابات</button>
+        <button class="chip" data-view="fixtures" data-group="prep" onclick="switchFplView('fixtures', this)" data-ar="📅 صعوبة الفرق" data-en="📅 Fixture Difficulty">📅 صعوبة الفرق</button>
+        <button class="chip" data-view="transfers" data-group="prep" onclick="switchFplView('transfers', this)" data-ar="🔄 الأكثر شراءً/بيعاً" data-en="🔄 Transfers In/Out">🔄 الأكثر شراءً/بيعاً</button>
+
+        <button class="chip" data-view="form" data-group="rankings" onclick="switchFplView('form', this)" data-ar="🔥 الأعلى تألقاً" data-en="🔥 Top Form">🔥 الأعلى تألقاً</button>
+        <button class="chip" data-view="points" data-group="rankings" onclick="switchFplView('points', this)" data-ar="🎯 توب سكورر" data-en="🎯 Top Scorers">🎯 توب سكورر</button>
+        <button class="chip" data-view="value" data-group="rankings" onclick="switchFplView('value', this)" data-ar="💰 أفضل قيمة" data-en="💰 Best Value">💰 أفضل قيمة</button>
+        <button class="chip" data-view="byteam" data-group="rankings" onclick="switchFplView('byteam', this)" data-ar="🏟️ أفضل كل فريق" data-en="🏟️ Best Per Team">🏟️ أفضل كل فريق</button>
+        <button class="chip" data-view="byposition" data-group="rankings" onclick="switchFplView('byposition', this)" data-ar="📍 أفضل كل مركز" data-en="📍 Best Per Position">📍 أفضل كل مركز</button>
+        <button class="chip" data-view="byprice" data-group="rankings" onclick="switchFplView('byprice', this)" data-ar="💷 أفضل كل فئة سعرية" data-en="💷 Best Per Price Tier">💷 أفضل كل فئة سعرية</button>
+        <button class="chip" data-view="teamhub" data-group="rankings" onclick="switchFplView('teamhub', this)" data-ar="🏟️ صفحة الفريق" data-en="🏟️ Team Hub">🏟️ صفحة الفريق</button>
+
+        <button class="chip" data-view="squad" data-group="mytools" onclick="switchFplView('squad', this)" data-ar="🧢 فريقي" data-en="🧢 My Team">🧢 فريقي</button>
+        <button class="chip" data-view="favorites" data-group="mytools" onclick="switchFplView('favorites', this)" data-ar="⭐ المفضلة" data-en="⭐ Favorites">⭐ المفضلة</button>
+        <button class="chip" data-view="compare" data-group="mytools" onclick="switchFplView('compare', this)" data-ar="⚖️ مقارنة اللاعبين" data-en="⚖️ Compare Players">⚖️ مقارنة اللاعبين</button>
+      </div>
+
+      <div id="fplView-captain" class="fpl-view active">
+        <div class="card-grid" id="pickGrid">
+          <div class="skeleton-card"><div class="skeleton-bar w40"></div><div class="skeleton-bar w70"></div><div class="skeleton-bar w90"></div><div class="skeleton-bar w90"></div><div class="skeleton-bar w50"></div></div>
+          <div class="skeleton-card"><div class="skeleton-bar w40"></div><div class="skeleton-bar w70"></div><div class="skeleton-bar w90"></div><div class="skeleton-bar w90"></div><div class="skeleton-bar w50"></div></div>
+          <div class="skeleton-card"><div class="skeleton-bar w40"></div><div class="skeleton-bar w70"></div><div class="skeleton-bar w90"></div><div class="skeleton-bar w90"></div><div class="skeleton-bar w50"></div></div>
+          <div class="skeleton-card"><div class="skeleton-bar w40"></div><div class="skeleton-bar w70"></div><div class="skeleton-bar w90"></div><div class="skeleton-bar w90"></div><div class="skeleton-bar w50"></div></div>
+        </div>
+      </div>
+
+      <div id="fplView-form" class="fpl-view">
+        <div class="leaderboard" id="formList">
+          <div class="skeleton-row"><div class="skeleton-bar w60"></div><div class="skeleton-bar w90"></div></div>
+          <div class="skeleton-row"><div class="skeleton-bar w60"></div><div class="skeleton-bar w90"></div></div>
+          <div class="skeleton-row"><div class="skeleton-bar w60"></div><div class="skeleton-bar w90"></div></div>
+        </div>
+      </div>
+
+      <div id="fplView-points" class="fpl-view">
+        <div class="leaderboard" id="pointsList">
+          <div class="skeleton-row"><div class="skeleton-bar w60"></div><div class="skeleton-bar w90"></div></div>
+          <div class="skeleton-row"><div class="skeleton-bar w60"></div><div class="skeleton-bar w90"></div></div>
+          <div class="skeleton-row"><div class="skeleton-bar w60"></div><div class="skeleton-bar w90"></div></div>
+        </div>
+      </div>
+
+      <div id="fplView-clean" class="fpl-view">
+        <div class="leaderboard" id="cleanList">
+          <div class="skeleton-row"><div class="skeleton-bar w60"></div><div class="skeleton-bar w90"></div></div>
+          <div class="skeleton-row"><div class="skeleton-bar w60"></div><div class="skeleton-bar w90"></div></div>
+          <div class="skeleton-row"><div class="skeleton-bar w60"></div><div class="skeleton-bar w90"></div></div>
+        </div>
+      </div>
+
+      <div id="fplView-value" class="fpl-view">
+        <div class="leaderboard" id="valueList">
+          <div class="skeleton-row"><div class="skeleton-bar w60"></div><div class="skeleton-bar w90"></div></div>
+          <div class="skeleton-row"><div class="skeleton-bar w60"></div><div class="skeleton-bar w90"></div></div>
+          <div class="skeleton-row"><div class="skeleton-bar w60"></div><div class="skeleton-bar w90"></div></div>
+        </div>
+      </div>
+
+      <div id="fplView-injury" class="fpl-view">
+        <div class="leaderboard" id="injuryList">
+          <div class="skeleton-row"><div class="skeleton-bar w60"></div><div class="skeleton-bar w90"></div></div>
+          <div class="skeleton-row"><div class="skeleton-bar w60"></div><div class="skeleton-bar w90"></div></div>
+          <div class="skeleton-row"><div class="skeleton-bar w60"></div><div class="skeleton-bar w90"></div></div>
+        </div>
+      </div>
+
+      <div id="fplView-byteam" class="fpl-view">
+        <div class="leaderboard" id="byTeamList">
+          <div class="skeleton-row"><div class="skeleton-bar w60"></div><div class="skeleton-bar w90"></div></div>
+          <div class="skeleton-row"><div class="skeleton-bar w60"></div><div class="skeleton-bar w90"></div></div>
+          <div class="skeleton-row"><div class="skeleton-bar w60"></div><div class="skeleton-bar w90"></div></div>
+        </div>
+      </div>
+
+      <div id="fplView-byposition" class="fpl-view">
+        <div id="byPositionList">
+          <div class="skeleton-row"><div class="skeleton-bar w60"></div><div class="skeleton-bar w90"></div></div>
+          <div class="skeleton-row"><div class="skeleton-bar w60"></div><div class="skeleton-bar w90"></div></div>
+          <div class="skeleton-row"><div class="skeleton-bar w60"></div><div class="skeleton-bar w90"></div></div>
+        </div>
+      </div>
+
+      <div id="fplView-byprice" class="fpl-view">
+        <div id="byPriceList">
+          <div class="skeleton-row"><div class="skeleton-bar w60"></div><div class="skeleton-bar w90"></div></div>
+          <div class="skeleton-row"><div class="skeleton-bar w60"></div><div class="skeleton-bar w90"></div></div>
+          <div class="skeleton-row"><div class="skeleton-bar w60"></div><div class="skeleton-bar w90"></div></div>
+        </div>
+      </div>
+
+      <div id="fplView-transfers" class="fpl-view">
+        <div id="transfersList">
+          <div class="skeleton-row"><div class="skeleton-bar w60"></div><div class="skeleton-bar w90"></div></div>
+          <div class="skeleton-row"><div class="skeleton-bar w60"></div><div class="skeleton-bar w90"></div></div>
+        </div>
+      </div>
+
+      <div id="fplView-compare" class="fpl-view">
+        <p class="hint-text" data-ar="افتح تفاصيل أي لاعب من أي قايمة ودوس ⚖️ عشان تضيفه هنا (لحد 3 لاعبين). قايمة المقارنة بتتحفظ على جهازك تلقائي." data-en="Open any player's details from any list and tap ⚖️ to add them here (up to 3 players). Your comparison list is saved automatically on this device.">افتح تفاصيل أي لاعب من أي قايمة ودوس ⚖️ عشان تضيفه هنا (لحد 3 لاعبين). قايمة المقارنة بتتحفظ على جهازك تلقائي.</p>
+        <div id="compareContent"><div class="lb-empty" data-ar="لسه ما اخترتش لاعبين للمقارنة" data-en="No players selected for comparison yet">لسه ما اخترتش لاعبين للمقارنة</div></div>
+      </div>
+
+      <div id="fplView-squad" class="fpl-view">
+        <div class="sync-panel">
+          <div class="sync-panel-head" data-ar="🔄 نقل بياناتك بين الأجهزة" data-en="🔄 Move your data between devices">🔄 نقل بياناتك بين الأجهزة</div>
+          <p class="hint-text" style="margin:0 0 12px;" data-ar="فريقك ومفضلتك ومقارنتك محفوظين على الجهاز ده بس. ولّد كود وانسخه على جهاز تاني عشان تنقل كل حاجة مرة واحدة." data-en="Your team, favorites, and comparisons are only saved on this device. Generate a code and paste it on another device to move everything at once.">فريقك ومفضلتك ومقارنتك محفوظين على الجهاز ده بس. ولّد كود وانسخه على جهاز تاني عشان تنقل كل حاجة مرة واحدة.</p>
+          <button class="expand-btn" onclick="exportMyData()"><span data-ar="📤 توليد ونسخ كود النقل" data-en="📤 Generate & copy transfer code">📤 توليد ونسخ كود النقل</span></button>
+          <textarea id="exportCodeBox" class="sync-textarea mono" readonly style="display:none;" onclick="this.select()"></textarea>
+          <div class="sync-import-row">
+            <input type="text" id="importCodeInput" class="search-input" data-ar-placeholder="الصق كود النقل هنا..." data-en-placeholder="Paste transfer code here..." placeholder="الصق كود النقل هنا...">
+            <button class="expand-btn" onclick="importMyData()" style="margin-top:8px;"><span data-ar="📥 استيراد الكود" data-en="📥 Import code">📥 استيراد الكود</span></button>
+          </div>
+        </div>
+        <p class="hint-text" data-ar="افتح تفاصيل أي لاعب ودوس ➕ عشان تضيفه لفريقك (15 لاعب، ميزانية £100م، أقصى 3 من نفس الفريق). فريقك بيتحفظ على جهازك ده تلقائي." data-en="Open any player's details and tap ➕ to add them to your team (15 players, £100m budget, max 3 per club). Your squad is saved automatically on this device.">افتح تفاصيل أي لاعب ودوس ➕ عشان تضيفه لفريقك (15 لاعب، ميزانية £100م، أقصى 3 من نفس الفريق). فريقك بيتحفظ على جهازك ده تلقائي.</p>
+        <div id="squadContent"><div class="lb-empty" data-ar="فريقك لسه فاضي" data-en="Your squad is empty so far">فريقك لسه فاضي</div></div>
+      </div>
+
+      <div id="fplView-fixtures" class="fpl-view">
+        <div id="fixtureTickerList">
+          <div class="skeleton-row"><div class="skeleton-bar w60"></div><div class="skeleton-bar w90"></div></div>
+          <div class="skeleton-row"><div class="skeleton-bar w60"></div><div class="skeleton-bar w90"></div></div>
+        </div>
+      </div>
+
+      <div id="fplView-teamhub" class="fpl-view">
+        <div class="team-selector" id="teamSelector"></div>
+        <div id="teamHubContent"><div class="lb-empty" data-ar="اختار فريق من فوق" data-en="Pick a team above">اختار فريق من فوق</div></div>
+      </div>
+
+      <div id="fplView-favorites" class="fpl-view">
+        <p class="hint-text" data-ar="لاعبينك المفضلين بيتحفظوا على جهازك ده تلقائي." data-en="Your favorite players are saved automatically on this device.">لاعبينك المفضلين بيتحفظوا على جهازك ده تلقائي.</p>
+        <div id="favoritesList"><div class="lb-empty" data-ar="لسه ما ضفتش لاعبين للمفضلة" data-en="No favorites added yet">لسه ما ضفتش لاعبين للمفضلة</div></div>
+      </div>
+    </div>
+
+    <p class="api-note mono">SOURCE: FANTASY PREMIER LEAGUE API</p>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <button id="backToTop" class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top" style="display:none;">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+
+  <!-- ===== PLAYBOOK TAB: FORMATIONS + TACTICS (MERGED) ===== -->
+  <div id="playbook" class="tab-content">
+
+    <div class="patch-banner">
+      <div class="patch-banner-head">
+        <span class="new-badge" data-ar="🆕 تحديث v6.0.0" data-en="🆕 v6.0.0 Update">🆕 تحديث v6.0.0</span>
+        <span class="mono" style="font-size:10px;color:var(--chalk-dim);" data-ar="أغسطس 2026 · تحديث موسمي مجاني" data-en="August 2026 · Free season update">أغسطس 2026 · تحديث موسمي مجاني</span>
+      </div>
+      <p data-ar="موسم eFootball 2027 استقبل تحديث v6.0.0: نظام تشكيل مرن يغيّر شكل الفريق تلقائي بين الهجوم والدفاع، تكتيك جماعي جديد اسمه Overload، ومدربين مختارين بقى معاهم رباط لعب مزدوج (Double Link-Up). التفاصيل تحت." data-en="eFootball 2027's v6.0.0 season update: a Fluid Formation system that auto-switches team shape between attack and defense, a new team playstyle called Overload, and selected managers now carrying a Double Link-Up. Details below.">موسم eFootball 2027 استقبل تحديث v6.0.0: نظام تشكيل مرن يغيّر شكل الفريق تلقائي بين الهجوم والدفاع، تكتيك جماعي جديد اسمه Overload، ومدربين مختارين بقى معاهم رباط لعب مزدوج (Double Link-Up). التفاصيل تحت.</p>
+    </div>
+
+    <div class="section-label"><h2 data-ar="أنظمة التشكيل" data-en="Formations">أنظمة التشكيل</h2><span class="mono">FORMATIONS</span></div>
+    <div class="card-grid">
+
+      <article class="formation-card formation-card--gold feature-card">
+        <span class="new-badge" style="margin-bottom:12px;display:inline-block;" data-ar="🆕 جديد v6.0.0" data-en="🆕 New in v6.0.0">🆕 جديد v6.0.0</span>
+        <div class="formation-top">
+          <div class="formation-dual">
+            <div>
+              <svg class="formation-mini formation-mini-sm" viewBox="0 0 100 130">
+                <rect class="fline" x="5" y="5" width="90" height="120" rx="6"/>
+                <circle cx="50" cy="118" r="4" fill="var(--gold)"/>
+                <circle cx="20" cy="92" r="4" fill="var(--gold)"/><circle cx="40" cy="92" r="4" fill="var(--gold)"/><circle cx="60" cy="92" r="4" fill="var(--gold)"/><circle cx="80" cy="92" r="4" fill="var(--gold)"/>
+                <circle cx="28" cy="58" r="4" fill="var(--gold)"/><circle cx="50" cy="58" r="4" fill="var(--gold)"/><circle cx="72" cy="58" r="4" fill="var(--gold)"/>
+                <circle cx="22" cy="22" r="4" fill="var(--gold)"/><circle cx="50" cy="22" r="4" fill="var(--gold)"/><circle cx="78" cy="22" r="4" fill="var(--gold)"/>
+              </svg>
+              <div class="mini-label">ATK</div>
+            </div>
+            <div>
+              <svg class="formation-mini formation-mini-sm" viewBox="0 0 100 130">
+                <rect class="fline" x="5" y="5" width="90" height="120" rx="6"/>
+                <circle cx="50" cy="118" r="4" fill="var(--gold)"/>
+                <circle cx="20" cy="94" r="4" fill="var(--gold)"/><circle cx="40" cy="94" r="4" fill="var(--gold)"/><circle cx="60" cy="94" r="4" fill="var(--gold)"/><circle cx="80" cy="94" r="4" fill="var(--gold)"/>
+                <circle cx="12" cy="58" r="4" fill="var(--gold)"/><circle cx="31" cy="58" r="4" fill="var(--gold)"/><circle cx="50" cy="58" r="4" fill="var(--gold)"/><circle cx="69" cy="58" r="4" fill="var(--gold)"/><circle cx="88" cy="58" r="4" fill="var(--gold)"/>
+                <circle cx="50" cy="20" r="4" fill="var(--gold)"/>
+              </svg>
+              <div class="mini-label">DEF</div>
+            </div>
+          </div>
+          <div><span class="formation-code mono">FLUID</span><h3 data-ar="التشكيل المرن" data-en="Fluid Formation">التشكيل المرن</h3><span class="formation-badge">ADAPTIVE</span></div>
+        </div>
+        <p class="formation-desc" data-ar="مميزة جديدة كلياً: تحدد شكل للهجوم وشكل تاني للدفاع، والفريق يتحول بينهم أوتوماتيك حسب مين ماسك الكورة — تهجم بـ4-3-3 وترجع دفاعي بـ4-5-1 من غير ما توقف اللعب وتبدّل يدوي." data-en="A brand-new feature: set one shape for attack and another for defense, and the team auto-switches based on who has the ball — attack in a 4-3-3 and drop into a 4-5-1 without pausing play to switch manually.">مميزة جديدة كلياً: تحدد شكل للهجوم وشكل تاني للدفاع، والفريق يتحول بينهم أوتوماتيك حسب مين ماسك الكورة — تهجم بـ4-3-3 وترجع دفاعي بـ4-5-1 من غير ما توقف اللعب وتبدّل يدوي.</p>
+        <div class="tactic-tags"><span class="tag mono">AUTO-SWITCH</span><span class="tag mono">ATK + DEF SHAPES</span></div>
+        <button class="expand-btn" onclick="toggleExpand(this)" aria-expanded="false"><span data-ar="تفاصيل تكتيكية" data-en="Tactical breakdown">تفاصيل تكتيكية</span><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="expand-panel"><div>
+          <div class="tactic-detail-row"><span class="td-icon">💪</span><p data-ar="تقدر تدافع بأمان زيادة من غير ما تضحي بخطورتك الهجومية وقت الهجوم." data-en="Extra defensive security without sacrificing your attacking threat when you push forward.">تقدر تدافع بأمان زيادة من غير ما تضحي بخطورتك الهجومية وقت الهجوم.</p></div>
+          <div class="tactic-detail-row"><span class="td-icon">⚠️</span><p data-ar="لازم اللاعبين يفهموا الشكلين كويس، وإلا هيحصل تشويش في لحظة التغيير." data-en="Players need to fully understand both shapes, or the switch moment causes confusion.">لازم اللاعبين يفهموا الشكلين كويس، وإلا هيحصل تشويش في لحظة التغيير.</p></div>
+          <div class="tactic-detail-row"><span class="td-icon">💡</span><p data-ar="خلي الفرق بين شكل الهجوم والدفاع في مركز أو اتنين بس عشان الانتقال يبقى سلس." data-en="Keep the gap between your attack and defense shapes to just one or two positions for a smooth transition.">خلي الفرق بين شكل الهجوم والدفاع في مركز أو اتنين بس عشان الانتقال يبقى سلس.</p></div>
+        </div></div>
+      </article>
+
+      <article class="formation-card formation-card--red">
+        <div class="formation-top">
+          <svg class="formation-mini" viewBox="0 0 100 130">
+            <rect class="fline" x="5" y="5" width="90" height="120" rx="6"/><circle class="fline" cx="50" cy="70" r="10"/>
+            <circle cx="50" cy="118" r="4" fill="var(--red)"/>
+            <circle cx="20" cy="92" r="4" fill="var(--red)"/><circle cx="40" cy="92" r="4" fill="var(--red)"/><circle cx="60" cy="92" r="4" fill="var(--red)"/><circle cx="80" cy="92" r="4" fill="var(--red)"/>
+            <circle cx="28" cy="58" r="4" fill="var(--red)"/><circle cx="50" cy="58" r="4" fill="var(--red)"/><circle cx="72" cy="58" r="4" fill="var(--red)"/>
+            <circle cx="22" cy="22" r="4" fill="var(--red)"/><circle cx="50" cy="22" r="4" fill="var(--red)"/><circle cx="78" cy="22" r="4" fill="var(--red)"/>
+          </svg>
+          <div><span class="formation-code mono">4-3-3</span><h3 data-ar="الأكثر هجومية" data-en="Most Attacking">الأكثر هجومية</h3><span class="formation-badge">ATTACK</span></div>
+        </div>
+        <p class="formation-desc" data-ar="تشكيل هجومي بثلاثة مهاجمين يضغطون على أطراف الدفاع. مثالي لو عندك أجنحة سريعة ومهاجم صريح قوي في الحركة خلف الظهور." data-en="An attacking shape with three forwards pressing the edges of the defense. Ideal if you have fast wingers and a striker who's strong at running in behind.">تشكيل هجومي بثلاثة مهاجمين يضغطون على أطراف الدفاع. مثالي لو عندك أجنحة سريعة ومهاجم صريح قوي في الحركة خلف الظهور.</p>
+        <div class="tactic-tags"><span class="tag mono">WIDE FORWARDS</span><span class="tag mono">HIGH LINE</span></div>
+        <button class="expand-btn" onclick="toggleExpand(this)" aria-expanded="false"><span data-ar="تفاصيل تكتيكية" data-en="Tactical breakdown">تفاصيل تكتيكية</span><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="expand-panel"><div>
+          <div class="tactic-detail-row"><span class="td-icon">💪</span><p data-ar="عرض هجومي وضغط عالي على أطراف دفاع الخصم." data-en="Attacking width and high pressure on the edges of the opponent's defense.">عرض هجومي وضغط عالي على أطراف دفاع الخصم.</p></div>
+          <div class="tactic-detail-row"><span class="td-icon">⚠️</span><p data-ar="مساحات كبيرة في نص الملعب لو الوسط الثلاثي اتكسر أو اتلف." data-en="Big gaps in midfield if your three-man line gets split or bypassed.">مساحات كبيرة في نص الملعب لو الوسط الثلاثي اتكسر أو اتلف.</p></div>
+          <div class="tactic-detail-row"><span class="td-icon">💡</span><p data-ar="أفضل حل ضد الفرق اللي بتلعب دفاعي ومقفول (زي 5-3-2)." data-en="Works best against deep, packed defensive setups (like a 5-3-2).">أفضل حل ضد الفرق اللي بتلعب دفاعي ومقفول (زي 5-3-2).</p></div>
+        </div></div>
+      </article>
+
+      <article class="formation-card formation-card--gold">
+        <div class="formation-top">
+          <svg class="formation-mini" viewBox="0 0 100 130">
+            <rect class="fline" x="5" y="5" width="90" height="120" rx="6"/><circle class="fline" cx="50" cy="70" r="10"/>
+            <circle cx="50" cy="118" r="4" fill="var(--gold)"/>
+            <circle cx="20" cy="100" r="4" fill="var(--gold)"/><circle cx="40" cy="100" r="4" fill="var(--gold)"/><circle cx="60" cy="100" r="4" fill="var(--gold)"/><circle cx="80" cy="100" r="4" fill="var(--gold)"/>
+            <circle cx="35" cy="76" r="4" fill="var(--gold)"/><circle cx="65" cy="76" r="4" fill="var(--gold)"/>
+            <circle cx="25" cy="48" r="4" fill="var(--gold)"/><circle cx="50" cy="48" r="4" fill="var(--gold)"/><circle cx="75" cy="48" r="4" fill="var(--gold)"/>
+            <circle cx="50" cy="18" r="4" fill="var(--gold)"/>
+          </svg>
+          <div><span class="formation-code mono">4-2-3-1</span><h3 data-ar="الأكثر توازناً" data-en="Most Balanced">الأكثر توازناً</h3><span class="formation-badge">BALANCED</span></div>
+        </div>
+        <p class="formation-desc" data-ar="ثنائي ارتكاز يحمي الدفاع، وصانع ألعاب حر خلف مهاجم واحد. اختيار ذكي لو عايز تحكم في الوسط من غير ما تكشف دفاعك." data-en="A double pivot protects the defense, with a free playmaker behind a single striker. A smart pick if you want midfield control without exposing your defense.">ثنائي ارتكاز يحمي الدفاع، وصانع ألعاب حر خلف مهاجم واحد. اختيار ذكي لو عايز تحكم في الوسط من غير ما تكشف دفاعك.</p>
+        <div class="tactic-tags"><span class="tag mono">DOUBLE PIVOT</span><span class="tag mono">FREE No.10</span></div>
+        <button class="expand-btn" onclick="toggleExpand(this)" aria-expanded="false"><span data-ar="تفاصيل تكتيكية" data-en="Tactical breakdown">تفاصيل تكتيكية</span><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="expand-panel"><div>
+          <div class="tactic-detail-row"><span class="td-icon">💪</span><p data-ar="توازن دفاعي وهجومي، وحماية قوية للخط الخلفي." data-en="Solid defensive/attacking balance and strong protection for the back line.">توازن دفاعي وهجومي، وحماية قوية للخط الخلفي.</p></div>
+          <div class="tactic-detail-row"><span class="td-icon">⚠️</span><p data-ar="خطورتك الهجومية بتعتمد بشكل كبير على مستوى لاعب الـ10." data-en="Your attacking threat leans heavily on how well your No.10 performs.">خطورتك الهجومية بتعتمد بشكل كبير على مستوى لاعب الـ10.</p></div>
+          <div class="tactic-detail-row"><span class="td-icon">💡</span><p data-ar="مثالي ضد فرق بتعتمد على لاعب حر واحد بيصنع اللعب." data-en="Great against teams that build everything through one free playmaker.">مثالي ضد فرق بتعتمد على لاعب حر واحد بيصنع اللعب.</p></div>
+        </div></div>
+      </article>
+
+      <article class="formation-card formation-card--teal">
+        <div class="formation-top">
+          <svg class="formation-mini" viewBox="0 0 100 130">
+            <rect class="fline" x="5" y="5" width="90" height="120" rx="6"/><circle class="fline" cx="50" cy="70" r="10"/>
+            <circle cx="50" cy="118" r="4" fill="var(--teal)"/>
+            <circle cx="28" cy="96" r="4" fill="var(--teal)"/><circle cx="50" cy="96" r="4" fill="var(--teal)"/><circle cx="72" cy="96" r="4" fill="var(--teal)"/>
+            <circle cx="12" cy="62" r="4" fill="var(--teal)"/><circle cx="31" cy="62" r="4" fill="var(--teal)"/><circle cx="50" cy="62" r="4" fill="var(--teal)"/><circle cx="69" cy="62" r="4" fill="var(--teal)"/><circle cx="88" cy="62" r="4" fill="var(--teal)"/>
+            <circle cx="35" cy="22" r="4" fill="var(--teal)"/><circle cx="65" cy="22" r="4" fill="var(--teal)"/>
+          </svg>
+          <div><span class="formation-code mono">3-5-2</span><h3 data-ar="تكديس الوسط" data-en="Midfield Overload">تكديس الوسط</h3><span class="formation-badge">CONTROL</span></div>
+        </div>
+        <p class="formation-desc" data-ar="خمسة لاعبين في الوسط بيدوا سيطرة كاملة على المنطقة الحساسة، والظهيرين بيتحولوا لأجنحة كاملة في الهجوم." data-en="Five midfielders give you full control of the key zone, while the wing-backs push forward into full wingers when attacking.">خمسة لاعبين في الوسط بيدوا سيطرة كاملة على المنطقة الحساسة، والظهيرين بيتحولوا لأجنحة كاملة في الهجوم.</p>
+        <div class="tactic-tags"><span class="tag mono">MIDFIELD OVERLOAD</span><span class="tag mono">WING-BACKS</span></div>
+        <button class="expand-btn" onclick="toggleExpand(this)" aria-expanded="false"><span data-ar="تفاصيل تكتيكية" data-en="Tactical breakdown">تفاصيل تكتيكية</span><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="expand-panel"><div>
+          <div class="tactic-detail-row"><span class="td-icon">💪</span><p data-ar="سيطرة شبه كاملة على منطقة نص الملعب بعدد لاعبين أكتر." data-en="Near-total control of midfield thanks to sheer numbers there.">سيطرة شبه كاملة على منطقة نص الملعب بعدد لاعبين أكتر.</p></div>
+          <div class="tactic-detail-row"><span class="td-icon">⚠️</span><p data-ar="الظهيرين لازم يبقوا في لياقة عالية، وخطر لو الكورة راحت بسرعة للطرف." data-en="Wing-backs need top stamina, and it's vulnerable if the ball gets switched wide quickly.">الظهيرين لازم يبقوا في لياقة عالية، وخطر لو الكورة راحت بسرعة للطرف.</p></div>
+          <div class="tactic-detail-row"><span class="td-icon">💡</span><p data-ar="يهد فرق بتحب تلعب في مساحات ضيقة نص الملعب." data-en="Dominates teams that like to play narrow through the middle.">يهد فرق بتحب تلعب في مساحات ضيقة نص الملعب.</p></div>
+        </div></div>
+      </article>
+
+      <article class="formation-card formation-card--emerald">
+        <div class="formation-top">
+          <svg class="formation-mini" viewBox="0 0 100 130">
+            <rect class="fline" x="5" y="5" width="90" height="120" rx="6"/><circle class="fline" cx="50" cy="70" r="10"/>
+            <circle cx="50" cy="118" r="4" fill="var(--emerald)"/>
+            <circle cx="20" cy="98" r="4" fill="var(--emerald)"/><circle cx="40" cy="98" r="4" fill="var(--emerald)"/><circle cx="60" cy="98" r="4" fill="var(--emerald)"/><circle cx="80" cy="98" r="4" fill="var(--emerald)"/>
+            <circle cx="20" cy="60" r="4" fill="var(--emerald)"/><circle cx="40" cy="60" r="4" fill="var(--emerald)"/><circle cx="60" cy="60" r="4" fill="var(--emerald)"/><circle cx="80" cy="60" r="4" fill="var(--emerald)"/>
+            <circle cx="35" cy="22" r="4" fill="var(--emerald)"/><circle cx="65" cy="22" r="4" fill="var(--emerald)"/>
+          </svg>
+          <div><span class="formation-code mono">4-4-2</span><h3 data-ar="الكلاسيكي المباشر" data-en="Direct Classic">الكلاسيكي المباشر</h3><span class="formation-badge">DIRECT</span></div>
+        </div>
+        <p class="formation-desc" data-ar="تشكيل مباشر وبسيط، ومثالي لو بتحب اللعب العملي والكرات الطويلة لثنائي هجومي قوي في الكرة الهوائية." data-en="A simple, direct shape — ideal if you like practical football and long balls into a strong two-striker partnership in the air.">تشكيل مباشر وبسيط، ومثالي لو بتحب اللعب العملي والكرات الطويلة لثنائي هجومي قوي في الكرة الهوائية.</p>
+        <div class="tactic-tags"><span class="tag mono">LONG BALL</span><span class="tag mono">TWO STRIKERS</span></div>
+        <button class="expand-btn" onclick="toggleExpand(this)" aria-expanded="false"><span data-ar="تفاصيل تكتيكية" data-en="Tactical breakdown">تفاصيل تكتيكية</span><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="expand-panel"><div>
+          <div class="tactic-detail-row"><span class="td-icon">💪</span><p data-ar="تنظيم بسيط وصعب تكسره، مناسب لأي مستوى لاعبين." data-en="Simple, hard-to-break structure that suits players of any level.">تنظيم بسيط وصعب تكسره، مناسب لأي مستوى لاعبين.</p></div>
+          <div class="tactic-detail-row"><span class="td-icon">⚠️</span><p data-ar="إبداع هجومي أقل، وممكن ينضغط لو الخصم عنده تفوق عددي في الوسط." data-en="Less creative in attack, and can get outnumbered if the opponent controls midfield.">إبداع هجومي أقل، وممكن ينضغط لو الخصم عنده تفوق عددي في الوسط.</p></div>
+          <div class="tactic-detail-row"><span class="td-icon">💡</span><p data-ar="فعّال جداً ضد دفاعات بطيئة في السرعة." data-en="Very effective against defenses that lack pace.">فعّال جداً ضد دفاعات بطيئة في السرعة.</p></div>
+        </div></div>
+      </article>
+
+    </div>
+
+    <div class="section-label"><h2 data-ar="المدربون" data-en="Managers">المدربون</h2><span class="mono">MANAGERS</span></div>
+    <div class="card-grid">
+      <article class="tactic-card feature-card">
+        <span class="new-badge" style="margin-bottom:12px;display:inline-block;" data-ar="🆕 جديد v6.0.0" data-en="🆕 New in v6.0.0">🆕 جديد v6.0.0</span>
+        <div class="tactic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M8 11c-3 0-5 2-5 5v2h6M16 11c3 0 5 2 5 5v2h-6"/><path d="M11 14h2"/></svg></div>
+        <h3 data-ar="مدربو الرباط المزدوج" data-en="Double Link-Up Managers">مدربو الرباط المزدوج</h3><span class="tactic-eng mono">DOUBLE LINK-UP</span>
+        <p data-ar="لأول مرة، بعض المدربين بقى معاهم رباطين لعب (Link-Up) بدل واحد بس. اللاعب اللي بيبدأ الحركة (Centre Piece) واللاعب اللي بيكملها (Key Man) لازم يحققوا شروط أسلوب اللعب والمركز المطلوبين بالظبط عشان الرباط يشتغل — مش مجرد لاعبين مشهورين في نفس الفريق." data-en="For the first time, some managers now carry two Link-Up Plays instead of one. The player who starts the move (Centre Piece) and the player who finishes it (Key Man) must exactly match the required playing style and position — it's not just two big names on the same team.">لأول مرة، بعض المدربين بقى معاهم رباطين لعب (Link-Up) بدل واحد بس. اللاعب اللي بيبدأ الحركة (Centre Piece) واللاعب اللي بيكملها (Key Man) لازم يحققوا شروط أسلوب اللعب والمركز المطلوبين بالظبط عشان الرباط يشتغل — مش مجرد لاعبين مشهورين في نفس الفريق.</p>
+        <div class="tactic-tags"><span class="tag mono">CENTRE PIECE</span><span class="tag mono">KEY MAN</span></div>
+        <button class="expand-btn" onclick="toggleExpand(this)" aria-expanded="false"><span data-ar="تفاصيل تكتيكية" data-en="Tactical breakdown">تفاصيل تكتيكية</span><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="expand-panel"><div>
+          <div class="tactic-detail-row"><span class="td-icon">🎯</span><p data-ar="مثال حالي: أنطونيو كونتي — أول مدرب برباط مزدوج، بمزيج Over-the-Top Pass C و 1-2 Cut-in B. (بطاقات المدربين بتتغير مع الوقت، ده مثال وقت صدور التحديث في أغسطس 2026)." data-en="Current example: Antonio Conte — the first Double Link-Up manager, combining Over-the-Top Pass C and 1-2 Cut-in B. (Manager cards rotate over time; this reflects the update's August 2026 launch.)">مثال حالي: أنطونيو كونتي — أول مدرب برباط مزدوج، بمزيج Over-the-Top Pass C و 1-2 Cut-in B. (بطاقات المدربين بتتغير مع الوقت، ده مثال وقت صدور التحديث في أغسطس 2026).</p></div>
+          <div class="tactic-detail-row"><span class="td-icon">💡</span><p data-ar="قبل ما تختار مدرب برباط مزدوج، تأكد إن تشكيلك ومراكز لاعبينك بتحقق شروط الرباطين مع بعض — أحياناً لاعب واحد بيتظبط في رباط ويكسر التاني." data-en="Before picking a Double Link-Up manager, make sure your formation and player positions satisfy both link-ups at once — sometimes fitting one breaks the other.">قبل ما تختار مدرب برباط مزدوج، تأكد إن تشكيلك ومراكز لاعبينك بتحقق شروط الرباطين مع بعض — أحياناً لاعب واحد بيتظبط في رباط ويكسر التاني.</p></div>
+        </div></div>
+      </article>
+    </div>
+
+    <div class="section-label"><h2 data-ar="خطط الملعب" data-en="Match Tactics">خطط الملعب</h2><span class="mono">MATCH TACTICS</span></div>
+    <div class="card-grid">
+
+      <article class="tactic-card tactic-card--overload">
+        <span class="new-badge" style="margin-bottom:12px;display:inline-block;" data-ar="🆕 جديد v6.0.0" data-en="🆕 New in v6.0.0">🆕 جديد v6.0.0</span>
+        <div class="tactic-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><circle cx="5" cy="7" r="1.6"/><circle cx="19" cy="7" r="1.6"/><circle cx="5" cy="17" r="1.6"/><circle cx="19" cy="17" r="1.6"/><path d="M7 8.3L10.3 11M17 8.3L13.7 11M7 15.7L10.3 13M17 15.7L13.7 13"/></svg></div>
+        <h3 data-ar="التكديس حول الكورة" data-en="Overload">التكديس حول الكورة</h3><span class="tactic-eng mono">OVERLOAD</span>
+        <p data-ar="تكتيك جماعي جديد بيخلي اللاعبين يتجمعوا حوالين حامل الكورة — هيديك خيارات تمرير قصيرة كتير، ودفاع مضغوط، وضغط عالي فور ما تضيع منك الكورة. مناسب لو بتحب تلعب في مساحات ضيقة وتخنق خصمك." data-en="A new team playstyle that groups players near the ball carrier — giving you plenty of short passing options, compact defending, and an instant high press when you lose the ball. Great if you like tight spaces and choking your opponent.">تكتيك جماعي جديد بيخلي اللاعبين يتجمعوا حوالين حامل الكورة — هيديك خيارات تمرير قصيرة كتير، ودفاع مضغوط، وضغط عالي فور ما تضيع منك الكورة. مناسب لو بتحب تلعب في مساحات ضيقة وتخنق خصمك.</p>
+        <div class="tactic-tags"><span class="tag mono">TEAM PLAYSTYLE</span><span class="tag mono">COMPACT + HIGH PRESS</span></div>
+        <button class="expand-btn" onclick="toggleExpand(this)" aria-expanded="false"><span data-ar="تفاصيل تكتيكية" data-en="Tactical breakdown">تفاصيل تكتيكية</span><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="expand-panel"><div>
+          <div class="tactic-detail-row"><span class="td-icon">💪</span><p data-ar="استرجاع سريع جداً للكرة وخنق مساحات الخصم في لحظة فقدها." data-en="Very fast ball recovery, choking the opponent's space the instant they lose it.">استرجاع سريع جداً للكرة وخنق مساحات الخصم في لحظة فقدها.</p></div>
+          <div class="tactic-detail-row"><span class="td-icon">⚠️</span><p data-ar="محتاج تناغم عالي بين اللاعبين، وخطر كبير لو الضغط اتكسر مرة واحدة." data-en="Needs high team chemistry — one broken press line is dangerous.">محتاج تناغم عالي بين اللاعبين، وخطر كبير لو الضغط اتكسر مرة واحدة.</p></div>
+          <div class="tactic-detail-row"><span class="td-icon">💡</span><p data-ar="استخدمه في آخر 15-20 دقيقة لما لياقة الخصم تبدأ تقل." data-en="Deploy it in the final 15-20 minutes once the opponent's stamina starts to drop.">استخدمه في آخر 15-20 دقيقة لما لياقة الخصم تبدأ تقل.</p></div>
+          <div class="tactic-detail-row"><span class="td-icon">🎯</span><p data-ar="تشكيل مقترح: كوّن مثلث بالظهير والوسط والجناح على جنب واحد، وخلي الوسط الدفاعي يحمي المنتصف، والجناح التاني يفضل نقطة خروج." data-en="Suggested setup: form a triangle with the full-back, midfielder, and winger on one flank, keep a defensive midfielder protecting the center, and leave the opposite winger as an outlet.">تشكيل مقترح: كوّن مثلث بالظهير والوسط والجناح على جنب واحد، وخلي الوسط الدفاعي يحمي المنتصف، والجناح التاني يفضل نقطة خروج.</p></div>
+        </div></div>
+      </article>
+
+      <article class="tactic-card tactic-card--counter">
+        <div class="tactic-icon"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-9M15 6h6v6"/></svg></div>
+        <h3 data-ar="المرتدات السريعة" data-en="Quick Counter">المرتدات السريعة</h3><span class="tactic-eng mono">QUICK COUNTER</span>
+        <p data-ar="مثالي لو بتلعب ضد خصم بيستحوذ على الكورة. خلي المهاجمين بتوعك سرعتهم عالية، وبمجرد قطع الكورة اعتمد على التمريرة الطويلة في المساحة الفاضية ورا المدافعين." data-en="Ideal against a possession-heavy opponent. Keep your forwards' pace high, and the moment you win the ball, look for the long pass into the space behind the defense.">مثالي لو بتلعب ضد خصم بيستحوذ على الكورة. خلي المهاجمين بتوعك سرعتهم عالية، وبمجرد قطع الكورة اعتمد على التمريرة الطويلة في المساحة الفاضية ورا المدافعين.</p>
+        <div class="tactic-tags"><span class="tag mono">SPEED 85+</span><span class="tag mono">THROUGH BALL</span></div>
+        <button class="expand-btn" onclick="toggleExpand(this)" aria-expanded="false"><span data-ar="تفاصيل تكتيكية" data-en="Tactical breakdown">تفاصيل تكتيكية</span><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="expand-panel"><div>
+          <div class="tactic-detail-row"><span class="td-icon">💪</span><p data-ar="خطورة عالية جداً بأقل مجهود ولاعبين أقل." data-en="Very high threat with minimal effort and fewer players involved.">خطورة عالية جداً بأقل مجهود ولاعبين أقل.</p></div>
+          <div class="tactic-detail-row"><span class="td-icon">⚠️</span><p data-ar="هتدّي استحواذ كتير للخصم، ومحتاج دقة في آخر تمريرة." data-en="You'll concede a lot of possession, and it needs precision on the final pass.">هتدّي استحواذ كتير للخصم، ومحتاج دقة في آخر تمريرة.</p></div>
+          <div class="tactic-detail-row"><span class="td-icon">💡</span><p data-ar="خلي مهاجم واحد ثابت في العمق طول الوقت يستنى التمريرة الطويلة." data-en="Keep one striker permanently high, waiting for the long ball.">خلي مهاجم واحد ثابت في العمق طول الوقت يستنى التمريرة الطويلة.</p></div>
+        </div></div>
+      </article>
+
+      <article class="tactic-card tactic-card--possession">
+        <div class="tactic-icon"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="18" r="2.2"/><circle cx="12" cy="6" r="2.2"/><path d="M7.8 16.6L11 7.8M16.2 16.6L13 7.8M8.2 18h7.6"/></svg></div>
+        <h3 data-ar="التمريرات القصيرة" data-en="Possession Game">التمريرات القصيرة</h3><span class="tactic-eng mono">POSSESSION GAME</span>
+        <p data-ar="لو بتحب تبني اللعب بهدوء، الخطة دي محتاجة خط وسط تمريراته دقيقة. العب بنظام مثلثات واستنى الثغرة تفتح في دفاع الخصم بدل ما تتسرع وتفقد الكورة." data-en="If you like building play calmly, this needs a midfield with accurate passing. Play in triangles and wait for the gap to open in the opponent's defense instead of rushing and losing the ball.">لو بتحب تبني اللعب بهدوء، الخطة دي محتاجة خط وسط تمريراته دقيقة. العب بنظام مثلثات واستنى الثغرة تفتح في دفاع الخصم بدل ما تتسرع وتفقد الكورة.</p>
+        <div class="tactic-tags"><span class="tag mono">TRIANGLES</span><span class="tag mono">TEMPO: CALM</span></div>
+        <button class="expand-btn" onclick="toggleExpand(this)" aria-expanded="false"><span data-ar="تفاصيل تكتيكية" data-en="Tactical breakdown">تفاصيل تكتيكية</span><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="expand-panel"><div>
+          <div class="tactic-detail-row"><span class="td-icon">💪</span><p data-ar="تحكم كامل في إيقاع الماتش، وبيتعب الخصم دفاعياً مع الوقت." data-en="Full control of the match tempo, tiring the opponent's defense over time.">تحكم كامل في إيقاع الماتش، وبيتعب الخصم دفاعياً مع الوقت.</p></div>
+          <div class="tactic-detail-row"><span class="td-icon">⚠️</span><p data-ar="بطيء لو مفيش صبر، وسهل الخصم يقفلك في مساحات ضيقة." data-en="Slow without patience, and easy to get boxed in tight spaces.">بطيء لو مفيش صبر، وسهل الخصم يقفلك في مساحات ضيقة.</p></div>
+          <div class="tactic-detail-row"><span class="td-icon">💡</span><p data-ar="غيّر اتجاه اللعب بسرعة من جنب لجنب عشان تفتح مساحات جديدة." data-en="Switch play quickly from side to side to open up fresh gaps.">غيّر اتجاه اللعب بسرعة من جنب لجنب عشان تفتح مساحات جديدة.</p></div>
+        </div></div>
+      </article>
+
+      <article class="tactic-card tactic-card--press">
+        <div class="tactic-icon"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6M6 9l6-6 6 6"/></svg></div>
+        <h3 data-ar="الضغط العالي" data-en="High Press">الضغط العالي</h3><span class="tactic-eng mono">HIGH PRESS</span>
+        <p data-ar="ضغط مباشر على المدافعين فور فقدان الكورة عشان تسترجعها بسرعة قبل ما الخصم يرتب دفاعه. يحتاج لياقة عالية ومهاجمين شرسين في الالتحام." data-en="Direct pressure on defenders the instant you lose the ball, to win it back before the opponent settles. Needs high stamina and aggressive forwards in duels.">ضغط مباشر على المدافعين فور فقدان الكورة عشان تسترجعها بسرعة قبل ما الخصم يرتب دفاعه. يحتاج لياقة عالية ومهاجمين شرسين في الالتحام.</p>
+        <div class="tactic-tags"><span class="tag mono">TRIGGER: HIGH</span><span class="tag mono">STAMINA HIGH</span></div>
+        <button class="expand-btn" onclick="toggleExpand(this)" aria-expanded="false"><span data-ar="تفاصيل تكتيكية" data-en="Tactical breakdown">تفاصيل تكتيكية</span><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="expand-panel"><div>
+          <div class="tactic-detail-row"><span class="td-icon">💪</span><p data-ar="بيجبر الخصم على أخطاء في بناء اللعب من الخلف." data-en="Forces mistakes from the opponent building out from the back.">بيجبر الخصم على أخطاء في بناء اللعب من الخلف.</p></div>
+          <div class="tactic-detail-row"><span class="td-icon">⚠️</span><p data-ar="مساحات كبيرة جداً ورا الدفاع لو الضغط الأول اتكسر." data-en="Huge space behind the defense if the first press is beaten.">مساحات كبيرة جداً ورا الدفاع لو الضغط الأول اتكسر.</p></div>
+          <div class="tactic-detail-row"><span class="td-icon">💡</span><p data-ar="متستخدموش مع دفاع بطيء السرعة أو لياقة منخفضة." data-en="Don't pair it with a slow defense or low-stamina players.">متستخدموش مع دفاع بطيء السرعة أو لياقة منخفضة.</p></div>
+        </div></div>
+      </article>
+
+      <article class="tactic-card tactic-card--wing">
+        <div class="tactic-icon"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 12l4-4M3 12l4 4M21 12l-4-4M21 12l-4 4"/></svg></div>
+        <h3 data-ar="اللعب على الأطراف" data-en="Wing Play">اللعب على الأطراف</h3><span class="tactic-eng mono">WING PLAY</span>
+        <p data-ar="اعتمد على الظهيرين والأجنحة عشان توسّع الملعب وتفتح المساحات في النص، والعب عرضيات متكررة لمهاجم قوي في الكرات الهوائية." data-en="Use your full-backs and wingers to stretch the pitch and open space centrally, and keep sending crosses in for a striker who's strong in the air.">اعتمد على الظهيرين والأجنحة عشان توسّع الملعب وتفتح المساحات في النص، والعب عرضيات متكررة لمهاجم قوي في الكرات الهوائية.</p>
+        <div class="tactic-tags"><span class="tag mono">WIDTH: MAX</span><span class="tag mono">CROSSES</span></div>
+        <button class="expand-btn" onclick="toggleExpand(this)" aria-expanded="false"><span data-ar="تفاصيل تكتيكية" data-en="Tactical breakdown">تفاصيل تكتيكية</span><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="expand-panel"><div>
+          <div class="tactic-detail-row"><span class="td-icon">💪</span><p data-ar="بيفتح مساحات في نص الملعب عن طريق سحب مدافعين الخصم للطرف." data-en="Opens central space by dragging the opponent's defenders wide.">بيفتح مساحات في نص الملعب عن طريق سحب مدافعين الخصم للطرف.</p></div>
+          <div class="tactic-detail-row"><span class="td-icon">⚠️</span><p data-ar="بيعتمد بشكل كبير على جودة العرضيات ولاعب قوي في الكرة الهوائية." data-en="Heavily dependent on cross quality and a strong aerial striker.">بيعتمد بشكل كبير على جودة العرضيات ولاعب قوي في الكرة الهوائية.</p></div>
+          <div class="tactic-detail-row"><span class="td-icon">💡</span><p data-ar="نوّع بين عرضية مباشرة وتمريرة أرضية للمنطقة المتأخرة عشان متبقاش متوقع." data-en="Mix direct crosses with cutbacks along the ground to stay unpredictable.">نوّع بين عرضية مباشرة وتمريرة أرضية للمنطقة المتأخرة عشان متبقاش متوقع.</p></div>
+        </div></div>
+      </article>
+
+    </div>
+    <p class="api-note mono">PATCH INFO VERIFIED AGAINST KONAMI v6.0.0 NOTES · MANUALLY REFRESHED, NOT LIVE</p>
+  </div>
+
+  <footer>
+    <p data-ar="لوحة التكتيكات — حدّث خطتك كل جولة ⚽" data-en="Tactics Board — update your plan every gameweek ⚽">لوحة التكتيكات — حدّث خطتك كل جولة ⚽</p>
+    <p class="disclaimer" data-ar="أداة غير رسمية من عمل المشجعين، وغير تابعة لـ Premier League أو Fantasy Premier League أو KONAMI. كل أسماء الفرق والمدربين والعلامات التجارية ملك لأصحابها." data-en="An unofficial, fan-made tool — not affiliated with, endorsed by, or connected to the Premier League, Fantasy Premier League, or KONAMI. All team names, manager names, and trademarks belong to their respective owners.">أداة غير رسمية من عمل المشجعين، وغير تابعة لـ Premier League أو Fantasy Premier League أو KONAMI. كل أسماء الفرق والمدربين والعلامات التجارية ملك لأصحابها.</p>
+  </footer>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
