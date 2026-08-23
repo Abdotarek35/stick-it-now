@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stick It Now</title>
+  <meta name="description" content="Stick It Now - حط ملاحظاتك عايمة فوق أي تطبيق في موبايلك، في أي وقت." />
+  <meta property="og:title" content="Stick It Now" />
+  <meta property="og:description" content="حط ملاحظاتك عايمة فوق أي حاجة في موبايلك" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#c9a876" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="hero">
+    <div class="hero__notes">
+      <span class="mini-note mini-note--1"><i class="pin"></i></span>
+      <span class="mini-note mini-note--2"><i class="pin"></i></span>
+      <span class="mini-note mini-note--3"><i class="pin"></i></span>
+    </div>
+
+    <h1>Stick It Now</h1>
+    <p class="hero__tagline">حط ملاحظاتك عايمة فوق أي حاجة في موبايلك</p>
+
+    <a href="stick-it-now.apk" class="btn-download" download>
+      <span>نزّل التطبيق (APK)</span>
+    </a>
+    <p class="hero__note">مجاني، وبتثبته زي أي تطبيق عادي</p>
+
+    <div class="phone-mockup">
+      <div class="phone-mockup__notch"></div>
+      <div class="phone-mockup__screen" id="phoneScreen">
+        <div class="fake-app">
+          <div class="fake-app__header"></div>
+          <div class="fake-app__line"></div>
+          <div class="fake-app__line"></div>
+          <div class="fake-app__line short"></div>
+          <div class="fake-app__avatar-row">
+            <span class="fake-app__avatar"></span>
+            <div class="fake-app__bubble"></div>
+          </div>
+          <div class="fake-app__avatar-row">
+            <span class="fake-app__avatar"></span>
+            <div class="fake-app__bubble short"></div>
+          </div>
+        </div>
+
+        <div class="drag-demo" id="dragDemo">
+          <i class="pin"></i>
+          <div class="drag-demo__handle">اسحبني ↗</div>
+          <div class="drag-demo__body">كده هيبقى شكلها فوق أي تطبيق 👍</div>
+        </div>
+      </div>
+    </div>
+    <p class="hero__hint">👆 معاينة حقيقية - جرب اسحب النوتة جوه الشاشة</p>
+  </header>
+
+  <main>
+    <section class="problem reveal">
+      <p class="problem__text">
+        بتكتب حاجة تفتكرها وانت شغال على تطبيق تاني؟ بتقفل وتفتح تطبيقات كتير بس عشان تكتب ملحوظة صغيرة؟
+      </p>
+      <p class="problem__solution">
+        <strong>Stick It Now</strong> بيخليك تكتبها فورًا، عايمة فوق أي حاجة بتعملها - من غير ما تسيب اللي انت فيه.
+      </p>
+    </section>
+
+    <section class="how-it-works reveal">
+      <h2>إزاي بيشتغل</h2>
+      <div class="steps">
+        <div class="step-card reveal">
+          <span class="step-card__num">١</span>
+          <p>نزّل التطبيق وثبته على موبايلك</p>
+        </div>
+        <div class="step-card reveal">
+          <span class="step-card__num">٢</span>
+          <p>افتحه ووافق على إذن "العرض فوق التطبيقات التانية"</p>
+        </div>
+        <div class="step-card reveal">
+          <span class="step-card__num">٣</span>
+          <p>هتظهرلك note صفرا تقدر تسحبها وتكتب فيها فوق أي تطبيق تاني</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq reveal">
+      <h2>أسئلة شائعة</h2>
+
+      <div class="faq-item">
+        <button class="faq-item__q" aria-expanded="false" aria-controls="faq-a-1">ليه التطبيق محتاج إذن "العرض فوق التطبيقات التانية"؟</button>
+        <p class="faq-item__a" id="faq-a-1">
+          ده الإذن اللي بيخلي الـ note تفضل ظاهرة وانت فاتح أي تطبيق تاني - نفس الإذن اللي بتستخدمه تطبيقات زي Messenger عشان تعرض الـ chat heads.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-item__q" aria-expanded="false" aria-controls="faq-a-2">التطبيق موجود على Google Play؟</button>
+        <p class="faq-item__a" id="faq-a-2">
+          لسه لأ - التحميل دلوقتي مباشر من هنا كملف APK. لو موبايلك يسألك عن "تثبيت من مصادر غير معروفة"، وافق عشان يكمل التثبيت.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-item__q" aria-expanded="false" aria-controls="faq-a-3">بياخد بياناتي ولا لأ؟</button>
+        <p class="faq-item__a" id="faq-a-3">
+          لأ، الملاحظات بتفضل على جهازك بس.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Stick It Now</p>
+  </footer>
+
+  <div class="floating-cta" id="floatingCta">
+    <a href="stick-it-now.apk" download>نزّل التطبيق</a>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
