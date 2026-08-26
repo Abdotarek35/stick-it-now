@@ -18,6 +18,19 @@ body {
   overflow-x: hidden;
 }
 
+:focus-visible {
+  outline: 3px solid #2b2013;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 .pin {
   display: block;
   width: 13px;
@@ -36,7 +49,7 @@ body {
 
 .hero {
   text-align: center;
-  padding: 80px 20px 60px;
+  padding: 80px 20px 50px;
   position: relative;
   overflow: hidden;
 }
@@ -52,6 +65,7 @@ body {
   width: 46px;
   height: 46px;
   background: #ffe066;
+  border-radius: 3px;
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
   animation: sway 4.5s ease-in-out infinite;
 }
@@ -92,7 +106,7 @@ body {
   font-weight: bold;
   font-size: 1.1rem;
   padding: 16px 40px;
-  border-radius: 4px;
+  border-radius: 8px;
   box-shadow: 0 6px 0 #d9b73f;
   transition: transform 0.15s ease, box-shadow 0.2s ease;
 }
@@ -115,24 +129,132 @@ body {
   color: #4a3c22;
 }
 
-/* ---------- Draggable demo note ---------- */
+.hero__hint {
+  position: relative;
+  z-index: 1;
+  margin-top: 16px;
+  font-size: 0.85rem;
+  color: #5a4a2a;
+}
+
+/* ---------- Phone mockup ---------- */
+
+.phone-mockup {
+  width: 260px;
+  max-width: 90vw;
+  aspect-ratio: 240 / 480;
+  margin: 40px auto 0;
+  background: #1a1a1a;
+  border-radius: 36px;
+  padding: 12px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), inset 0 0 0 2px #333;
+  position: relative;
+  z-index: 1;
+}
+
+.phone-mockup__notch {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 33%;
+  height: 4%;
+  background: #1a1a1a;
+  border-radius: 0 0 12px 12px;
+  z-index: 3;
+}
+
+.phone-mockup__screen {
+  width: 100%;
+  height: 100%;
+  background: #fdf6e3;
+  border-radius: 26px;
+  overflow: hidden;
+  position: relative;
+}
+
+.fake-app {
+  padding: 34px 16px 16px;
+}
+
+.fake-app__header {
+  height: 12px;
+  width: 55%;
+  background: #ddd0b0;
+  border-radius: 3px;
+  margin-bottom: 16px;
+}
+
+.fake-app__line {
+  height: 7px;
+  background: #e8dcc0;
+  border-radius: 3px;
+  margin-bottom: 7px;
+  width: 90%;
+}
+
+.fake-app__line.short { width: 55%; }
+
+.fake-app__avatar-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 14px 0;
+}
+
+.fake-app__avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #c9a876;
+  flex-shrink: 0;
+}
+
+.fake-app__bubble {
+  height: 20px;
+  background: #e8dcc0;
+  border-radius: 10px;
+  flex: 1;
+}
+
+.fake-app__bubble.short { max-width: 55%; }
+
+/* ---------- Draggable demo note (inside the phone) ---------- */
 
 .drag-demo {
-  position: relative;
-  width: 200px;
-  margin: 56px auto 0;
+  position: absolute;
+  top: 130px;
+  left: 20px;
+  width: 175px;
   background: #a8d8b9;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+  border-radius: 3px;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.25),
+    0 16px 30px rgba(0, 0, 0, 0.32);
   cursor: grab;
   user-select: none;
   touch-action: none;
   transform: rotate(-2deg);
-  transition: box-shadow 0.2s ease;
-  z-index: 1;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  overflow: hidden;
+}
+
+.drag-demo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.18) 1px, transparent 1px),
+    radial-gradient(circle at 70% 55%, rgba(0, 0, 0, 0.06) 1px, transparent 1px),
+    radial-gradient(circle at 40% 85%, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+  background-size: 13px 13px, 17px 17px, 15px 15px;
+  pointer-events: none;
 }
 
 .drag-demo:hover {
-  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.4);
+  box-shadow:
+    0 3px 6px rgba(0, 0, 0, 0.3),
+    0 20px 36px rgba(0, 0, 0, 0.4);
 }
 
 .drag-demo:active {
@@ -140,16 +262,91 @@ body {
 }
 
 .drag-demo__handle {
-  padding: 10px;
+  position: relative;
+  padding: 9px;
   font-weight: bold;
+  font-size: 0.85rem;
   text-align: center;
   background: rgba(0, 0, 0, 0.08);
 }
 
 .drag-demo__body {
-  padding: 16px 12px;
-  font-size: 0.9rem;
+  position: relative;
+  padding: 12px;
+  font-size: 0.78rem;
   text-align: center;
+}
+
+.drag-demo__fold {
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 26px;
+  height: 26px;
+  background: linear-gradient(135deg, transparent 50%, rgba(0, 0, 0, 0.18) 50%, rgba(0, 0, 0, 0.3) 100%);
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  border-radius: 0 0 3px 0;
+}
+
+@keyframes settle {
+  0% { transform: rotate(-2deg) scale(1.06); }
+  45% { transform: rotate(2deg) scale(0.97); }
+  75% { transform: rotate(-1deg) scale(1.02); }
+  100% { transform: rotate(-2deg) scale(1); }
+}
+
+.drag-demo.is-settling {
+  animation: settle 0.4s ease-out;
+}
+
+/* ---------- Floating CTA ---------- */
+
+.floating-cta {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: #ffe066;
+  padding: 12px 30px;
+  border-radius: 50px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  z-index: 100;
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.floating-cta.is-visible {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.floating-cta a {
+  color: #3a2f1a;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+/* ---------- Problem section ---------- */
+
+.problem {
+  max-width: 560px;
+  margin: 0 auto 50px;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.problem__text {
+  font-size: 1.15rem;
+  color: #2b2013;
+  margin-bottom: 14px;
+}
+
+.problem__solution {
+  font-size: 1.05rem;
+  color: #4a3c22;
 }
 
 /* ---------- Main sections (paper sheets on the board) ---------- */
@@ -169,7 +366,7 @@ h2 {
 .how-it-works,
 .faq {
   background: #fffaf0;
-  border-radius: 6px;
+  border-radius: 16px;
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.3);
   padding: 44px 26px 34px;
   margin-bottom: 44px;
@@ -197,7 +394,7 @@ h2 {
 .step-card {
   background: #fff8e1;
   border: 1px solid #f0dfa0;
-  border-radius: 4px;
+  border-radius: 12px;
   padding: 24px 18px;
   width: 200px;
   text-align: center;
@@ -262,7 +459,7 @@ h2 {
 
 footer {
   text-align: center;
-  padding: 30px;
+  padding: 60px 30px 30px;
   color: #2b2013;
   font-size: 0.85rem;
 }
