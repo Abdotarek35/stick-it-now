@@ -10,7 +10,25 @@
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#c9a876" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Stick It Fast",
+    "operatingSystem": "Android",
+    "applicationCategory": "ProductivityApplication",
+    "description": "حط ملاحظاتك عايمة فوق أي حاجة في موبايلك",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
 </head>
 <body>
 
@@ -24,10 +42,17 @@
     <h1>Stick It Fast</h1>
     <p class="hero__tagline">حط ملاحظاتك عايمة فوق أي حاجة في موبايلك</p>
 
-    <a href="stick-it-fast.apk" class="btn-download" download>
-      <span>نزّل التطبيق (APK)</span>
-    </a>
-    <p class="hero__note">مجاني، وبتثبته زي أي تطبيق عادي</p>
+    <div id="downloadArea">
+      <a href="stick-it-fast.apk" class="btn-download" download>
+        <span>نزّل التطبيق (APK)</span>
+      </a>
+      <p class="hero__note">مجاني، وبتثبته زي أي تطبيق عادي</p>
+    </div>
+
+    <div id="qrArea" class="qr-area">
+      <p class="qr-area__label">التطبيق لأندرويد بس - امسح الكود ده بموبايلك عشان تنزّله</p>
+      <img id="qrImage" class="qr-area__img" alt="QR code لتحميل التطبيق" width="150" height="150" />
+    </div>
 
     <div class="phone-mockup">
       <div class="phone-mockup__notch"></div>
@@ -56,6 +81,8 @@
       </div>
     </div>
     <p class="hero__hint">👆 معاينة حقيقية - جرب اسحب النوتة جوه الشاشة</p>
+
+    <button id="shareBtn" class="btn-share" type="button">📤 شارك الموقع</button>
   </header>
 
   <main>

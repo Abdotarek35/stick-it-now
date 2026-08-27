@@ -1,3 +1,34 @@
+// Show a QR code instead of the download button for non-Android visitors
+var isAndroid = /Android/i.test(navigator.userAgent);
+if (!isAndroid) {
+  document.getElementById("downloadArea").style.display = "none";
+  var qrArea = document.getElementById("qrArea");
+  qrArea.style.display = "flex";
+  var pageUrl = encodeURIComponent(window.location.href);
+  document.getElementById("qrImage").src =
+    "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + pageUrl;
+}
+
+// Share button - native share sheet where available, copy link otherwise
+var shareBtn = document.getElementById("shareBtn");
+shareBtn.addEventListener("click", function () {
+  if (navigator.share) {
+    navigator.share({
+      title: "Stick It Fast",
+      text: "حط ملاحظاتك عايمة فوق أي حاجة في موبايلك",
+      url: window.location.href
+    }).catch(function () {});
+  } else if (navigator.clipboard) {
+    navigator.clipboard.writeText(window.location.href).then(function () {
+      var original = shareBtn.textContent;
+      shareBtn.textContent = "✅ اتنسخ اللينك";
+      setTimeout(function () {
+        shareBtn.textContent = original;
+      }, 2000);
+    });
+  }
+});
+
 // FAQ accordion
 document.querySelectorAll(".faq-item__q").forEach(function (button) {
   button.addEventListener("click", function () {
@@ -6,6 +37,20 @@ document.querySelectorAll(".faq-item__q").forEach(function (button) {
     button.setAttribute("aria-expanded", isOpen ? "true" : "false");
   });
 });
+
+// Parallax drift for the decorative mini-notes as the page scrolls
+var miniNotes = document.querySelectorAll(".mini-note");
+window.addEventListener(
+  "scroll",
+  function () {
+    var scrolled = window.scrollY;
+    miniNotes.forEach(function (el, i) {
+      var speed = 0.12 + i * 0.07;
+      el.style.setProperty("--py", scrolled * speed + "px");
+    });
+  },
+  { passive: true }
+);
 
 // Scroll-reveal for sections and cards
 var revealEls = document.querySelectorAll(".reveal");
@@ -30,7 +75,7 @@ var floatingCta = document.getElementById("floatingCta");
 var ctaObserver = new IntersectionObserver(
   function (entries) {
     entries.forEach(function (entry) {
-      floatingCta.classList.toggle("is-visible", !entry.isIntersecting);
+      floatingCta.classList.toggle("is-visible", !entry.isIntersecting && isAndroid);
     });
   },
   { threshold: 0 }
