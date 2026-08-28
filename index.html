@@ -3,12 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Stick It Fast</title>
-  <meta name="description" content="Stick It Fast - حط ملاحظاتك عايمة فوق أي تطبيق في موبايلك، في أي وقت." />
+  <title>Stick It Fast — ملاحظات لاصقة عايمة فوق أي تطبيق</title>
+  <meta name="description" content="Stick It Fast - حط ملاحظاتك عايمة فوق أي تطبيق في موبايلك، في أي وقت. مجاني، وبياناتك ما بتسيبش جهازك." />
   <meta property="og:title" content="Stick It Fast" />
-  <meta property="og:description" content="حط ملاحظاتك عايمة فوق أي حاجة في موبايلك" />
+  <meta property="og:description" content="حط ملاحظاتك عايمة فوق أي حاجة في موبايلك - من غير ما تسيب اللي انت فيه" />
   <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ar_AR" />
+  <meta name="twitter:card" content="summary" />
   <meta name="theme-color" content="#c9a876" />
+  <link rel="canonical" href="https://YOUR-WEBSITE-DOMAIN/" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -32,6 +35,8 @@
 </head>
 <body>
 
+  <a class="skip-link" href="#main">تخطى للمحتوى</a>
+
   <header class="hero">
     <div class="hero__notes">
       <span class="mini-note mini-note--1"><i class="pin"></i></span>
@@ -39,8 +44,15 @@
       <span class="mini-note mini-note--3"><i class="pin"></i></span>
     </div>
 
+    <p class="hero__eyebrow">ملاحظات لاصقة، بس رقمية</p>
     <h1>Stick It Fast</h1>
-    <p class="hero__tagline">حط ملاحظاتك عايمة فوق أي حاجة في موبايلك</p>
+    <p class="hero__tagline">اكتب فكرتك في نص ثانية، وهي عايمة فوق أي تطبيق بتستخدمه دلوقتي</p>
+
+    <ul class="trust-badges">
+      <li>🆓 مجاني بالكامل</li>
+      <li>🔒 بياناتك ما بتتخزنش على أي سيرفر</li>
+      <li>📴 شغال من غير نت</li>
+    </ul>
 
     <div id="downloadArea">
       <a href="stick-it-fast.apk" class="btn-download" download>
@@ -71,31 +83,77 @@
             <div class="fake-app__bubble short"></div>
           </div>
         </div>
-
-        <div class="drag-demo" id="dragDemo">
-          <i class="pin"></i>
-          <div class="drag-demo__handle">اسحبني ↗</div>
-          <div class="drag-demo__body">كده هيبقى شكلها فوق أي تطبيق 👍</div>
-          <i class="drag-demo__fold"></i>
-        </div>
+        <!-- ملاحظات الديمو التفاعلي بتتضاف هنا عن طريق script.js -->
       </div>
+      <button id="demoAddBtn" class="demo-add-btn" type="button" aria-label="أضف نوتة تجريبية جديدة">+</button>
+      <div id="demoToast" class="demo-toast" role="status" aria-live="polite"></div>
     </div>
-    <p class="hero__hint">👆 معاينة حقيقية - جرب اسحب النوتة جوه الشاشة</p>
+    <p class="hero__hint">👆 جرّب دلوقتي فوق الموبايل - اسحب، اكتب، لوّن بالنقطة، أو قفلها بـ ✕</p>
 
     <button id="shareBtn" class="btn-share" type="button">📤 شارك الموقع</button>
   </header>
 
-  <main>
-    <section class="problem reveal">
-      <p class="problem__text">
-        بتكتب حاجة تفتكرها وانت شغال على تطبيق تاني؟ بتقفل وتفتح تطبيقات كتير بس عشان تكتب ملحوظة صغيرة؟
-      </p>
-      <p class="problem__solution">
-        <strong>Stick It Fast</strong> بيخليك تكتبها فورًا، عايمة فوق أي حاجة بتعملها - من غير ما تسيب اللي انت فيه.
-      </p>
+  <main id="main">
+
+    <section class="compare paper-card reveal">
+      <h2>ليه محتاج Stick It Fast؟</h2>
+      <div class="compare__grid">
+        <div class="compare__col compare__col--before">
+          <h3>من غيرها</h3>
+          <ul>
+            <li>بتقفل اللي شغال عليه عشان تفتح تطبيق ملاحظات</li>
+            <li>بتنسى نص الفكرة وانت بتدور على التطبيق</li>
+            <li>ملاحظاتك بتتوه بين تطبيقات كتير</li>
+          </ul>
+        </div>
+        <div class="compare__col compare__col--after">
+          <h3>معاها</h3>
+          <ul>
+            <li>بتكتب فورًا من غير ما تسيب اللي انت فيه</li>
+            <li>النوتة قدامك طول الوقت، مش محتاج تدور عليها</li>
+            <li>كل حاجة بتكتبها بتفضل محفوظة على جهازك بس</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
-    <section class="how-it-works reveal">
+    <section class="features paper-card reveal">
+      <h2>كل حاجة هتحتاجها في نوتة واحدة</h2>
+      <div class="features__grid">
+        <div class="feature-card">
+          <span class="feature-card__icon" aria-hidden="true">📌</span>
+          <h3>اقفل مكانها</h3>
+          <p>دبوس واحد وميتزحزحش بالغلط وانت بتستخدم موبايلك</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-card__icon" aria-hidden="true">🎨</span>
+          <h3>لوّن على مزاجك</h3>
+          <p>دوسة على النقطة وتدور بين ٤ ألوان تفرّق بين نوتاتك</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-card__icon" aria-hidden="true">➕</span>
+          <h3>افتح نوتة جديدة</h3>
+          <p>محتاج أكتر من فكرة في نفس الوقت؟ زوّد نوتة من غير ما تسيب اللي فاتح</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-card__icon" aria-hidden="true">👆</span>
+          <h3>ضغطة مطوّلة = شفافية</h3>
+          <p>خليها شبه شفافة عشان تشوف اللي وراها من غير ما تقفلها</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-card__icon" aria-hidden="true">🔘</span>
+          <h3>صغّرها لنقطة</h3>
+          <p>ضغطة عادية وتبقى نقطة صغيرة في ركن الشاشة، وترجع تاني وقت ما تحب</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-card__icon" aria-hidden="true">🔁</span>
+          <h3>ترجع لوحدها</h3>
+          <p>حتى بعد ما تعمل ريستارت للموبايل، النوتات بترجع مكانها زي ما سبتها</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="how-it-works paper-card reveal">
       <h2>إزاي بيشتغل</h2>
       <div class="steps">
         <div class="step-card reveal">
@@ -108,12 +166,12 @@
         </div>
         <div class="step-card reveal">
           <span class="step-card__num">٣</span>
-          <p>هتظهرلك note صفرا تقدر تسحبها وتكتب فيها فوق أي تطبيق تاني</p>
+          <p>هتظهرلك نوتة صفرا تقدر تسحبها وتكتب فيها فوق أي تطبيق تاني</p>
         </div>
       </div>
     </section>
 
-    <section class="faq reveal">
+    <section class="faq paper-card reveal">
       <h2>أسئلة شائعة</h2>
 
       <div class="faq-item">
@@ -136,11 +194,19 @@
           لأ، الملاحظات بتفضل على جهازك بس.
         </p>
       </div>
+
+      <div class="faq-item">
+        <button class="faq-item__q" aria-expanded="false" aria-controls="faq-a-4">هل ينفع أستخدمه وأنا أوفلاين؟</button>
+        <p class="faq-item__a" id="faq-a-4">
+          أيوه، النوتات بتتخزن على جهازك مباشرة. النت مطلوب بس لو حابب التطبيق يتأكد إن فيه نسخة أحدث متاحة.
+        </p>
+      </div>
     </section>
   </main>
 
   <footer>
-    <p>Stick It Fast</p>
+    <p>Stick It Fast — ملاحظاتك، فورًا، في أي مكان</p>
+    <p><a href="privacy.html" style="color:#2b2013;">سياسة الخصوصية</a></p>
   </footer>
 
   <div class="floating-cta" id="floatingCta">
