@@ -38,8 +38,11 @@ document.querySelectorAll(".faq-item__q").forEach(function (button) {
   });
 });
 
-// ---------- حركة خفيفة للنوتات الصغيرة في الخلفية عند السكرول ----------
-var miniNotes = document.querySelectorAll(".mini-note");
+// ---------- حركة خفيفة لنوتات الهيرو الخلفية عند السكرول ----------
+// ملحوظة: مقصودة بس على نوتات الهيرو (اللي جوه صندوق بيقص أي حركة زايدة).
+// نوتات الفجوات بين الأقسام ليها حركة تمايل بسيطة بالـ CSS بس، من غير إزاحة
+// متراكمة مع السكرول، عشان متفلتش وتنزل تحت في الصفحة.
+var miniNotes = document.querySelectorAll(".hero__notes .mini-note");
 window.addEventListener(
   "scroll",
   function () {
