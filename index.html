@@ -47,56 +47,63 @@
       <span class="mini-note mini-note--3"><i class="pin"></i></span>
     </div>
 
-    <p class="hero__eyebrow">ملاحظات لاصقة، بس رقمية</p>
-    <h1>Stick It Fast</h1>
-    <p class="hero__tagline">اكتب فكرتك في نص ثانية، وهي عايمة فوق أي تطبيق بتستخدمه دلوقتي</p>
+    <div class="hero__text">
+      <p class="hero__eyebrow">ملاحظات لاصقة، بس رقمية</p>
+      <h1>Stick It Fast</h1>
+      <p class="hero__tagline">اكتب فكرتك في نص ثانية، وهي عايمة فوق أي تطبيق بتستخدمه دلوقتي</p>
 
-    <ul class="trust-badges">
-      <li>🆓 مجاني بالكامل</li>
-      <li>🔒 بياناتك ما بتتخزنش على أي سيرفر</li>
-      <li>📴 شغال من غير نت</li>
-    </ul>
+      <ul class="trust-badges">
+        <li>🆓 مجاني بالكامل</li>
+        <li>📴 شغال من غير نت</li>
+      </ul>
 
-    <div id="downloadArea">
-      <a href="stick-it-fast.apk" class="btn-download" download>
-        <span>نزّل التطبيق (APK)</span>
-      </a>
-      <p class="hero__note">مجاني، وبتثبته زي أي تطبيق عادي</p>
-    </div>
-
-    <div id="qrArea" class="qr-area">
-      <p class="qr-area__label">التطبيق لأندرويد بس - امسح الكود ده بموبايلك عشان تنزّله</p>
-      <img id="qrImage" class="qr-area__img" alt="QR code لتحميل التطبيق" width="150" height="150" />
-    </div>
-
-    <div class="phone-mockup">
-      <div class="phone-mockup__notch"></div>
-      <div class="phone-mockup__screen" id="phoneScreen">
-        <div class="fake-app">
-          <div class="fake-app__header"></div>
-          <div class="fake-app__line"></div>
-          <div class="fake-app__line"></div>
-          <div class="fake-app__line short"></div>
-          <div class="fake-app__avatar-row">
-            <span class="fake-app__avatar"></span>
-            <div class="fake-app__bubble"></div>
-          </div>
-          <div class="fake-app__avatar-row">
-            <span class="fake-app__avatar"></span>
-            <div class="fake-app__bubble short"></div>
-          </div>
-        </div>
-        <!-- ملاحظات الديمو التفاعلي بتتضاف هنا عن طريق script.js -->
+      <div id="downloadArea">
+        <a href="stick-it-fast.apk" class="btn-download" download>
+          <span>نزّل التطبيق (APK)</span>
+        </a>
+        <p class="hero__note">مجاني، وبتثبته زي أي تطبيق عادي</p>
       </div>
-      <button id="demoAddBtn" class="demo-add-btn" type="button" aria-label="أضف نوتة تجريبية جديدة">+</button>
-      <div id="demoToast" class="demo-toast" role="status" aria-live="polite"></div>
-    </div>
-    <p class="hero__hint">👆 جرّب دلوقتي فوق الموبايل - اسحب، اكتب، لوّن بالنقطة، أو قفلها بـ ✕</p>
 
-    <button id="shareBtn" class="btn-share" type="button">📤 شارك الموقع</button>
+      <div id="qrArea" class="qr-area">
+        <p class="qr-area__label">التطبيق لأندرويد بس - امسح الكود ده بموبايلك عشان تنزّله</p>
+        <img id="qrImage" class="qr-area__img" alt="QR code لتحميل التطبيق" width="150" height="150" />
+      </div>
+
+      <button id="shareBtn" class="btn-share" type="button">📤 شارك الموقع</button>
+    </div>
+
+    <div class="hero__visual">
+      <div class="phone-mockup">
+        <div class="phone-mockup__notch"></div>
+        <div class="phone-mockup__screen" id="phoneScreen">
+          <div class="fake-app">
+            <div class="fake-app__header"></div>
+            <div class="fake-app__line"></div>
+            <div class="fake-app__line"></div>
+            <div class="fake-app__line short"></div>
+            <div class="fake-app__avatar-row">
+              <span class="fake-app__avatar"></span>
+              <div class="fake-app__bubble"></div>
+            </div>
+            <div class="fake-app__avatar-row">
+              <span class="fake-app__avatar"></span>
+              <div class="fake-app__bubble short"></div>
+            </div>
+          </div>
+          <!-- ملاحظات الديمو التفاعلي بتتضاف هنا عن طريق script.js -->
+        </div>
+        <button id="demoAddBtn" class="demo-add-btn" type="button" aria-label="أضف نوتة تجريبية جديدة">+</button>
+        <div id="demoToast" class="demo-toast" role="status" aria-live="polite"></div>
+      </div>
+      <p class="hero__hint">👆 جرّب دلوقتي فوق الموبايل - اسحب، اكتب، لوّن بالنقطة، أو قفلها بـ ✕</p>
+    </div>
   </header>
 
   <main id="main">
+
+    <div class="note-gap" aria-hidden="true">
+      <span class="mini-note mini-note--4"><i class="pin"></i></span>
+    </div>
 
     <section class="compare paper-card reveal">
       <h2>ليه محتاج Stick It Fast؟</h2>
@@ -119,6 +126,10 @@
         </div>
       </div>
     </section>
+
+    <div class="note-gap" aria-hidden="true">
+      <span class="mini-note mini-note--5"><i class="pin"></i></span>
+    </div>
 
     <section class="features paper-card reveal">
       <h2>كل حاجة هتحتاجها في نوتة واحدة</h2>
@@ -156,6 +167,10 @@
       </div>
     </section>
 
+    <div class="note-gap" aria-hidden="true">
+      <span class="mini-note mini-note--6"><i class="pin"></i></span>
+    </div>
+
     <section class="how-it-works paper-card reveal">
       <h2>إزاي بيشتغل</h2>
       <div class="steps">
@@ -173,6 +188,10 @@
         </div>
       </div>
     </section>
+
+    <div class="note-gap" aria-hidden="true">
+      <span class="mini-note mini-note--7"><i class="pin"></i></span>
+    </div>
 
     <section class="faq paper-card reveal">
       <h2>أسئلة شائعة</h2>
@@ -205,6 +224,10 @@
         </p>
       </div>
     </section>
+
+    <div class="note-gap" aria-hidden="true">
+      <span class="mini-note mini-note--8"><i class="pin"></i></span>
+    </div>
   </main>
 
   <footer>

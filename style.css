@@ -109,6 +109,12 @@ body {
   overflow: hidden;
 }
 
+.hero__text,
+.hero__visual {
+  position: relative;
+  z-index: 1;
+}
+
 .hero__notes {
   position: absolute;
   inset: 0;
@@ -128,6 +134,20 @@ body {
 .mini-note--1 { top: 20px; left: 12%; --base-rot: -8deg; animation-delay: 0s; }
 .mini-note--2 { top: 60px; right: 15%; --base-rot: 10deg; background: var(--green); animation-delay: 0.6s; }
 .mini-note--3 { bottom: 10px; left: 25%; --base-rot: 5deg; background: var(--coral); animation-delay: 1.2s; }
+
+/* نوتات عايمة زيادة موزّعة في الفراغات بين الأقسام - محطوطة في الحواف
+   الفاضية بس، فمستحيل تغطي على أي نص */
+.note-gap {
+  position: relative;
+  height: 0;
+  overflow: visible;
+}
+
+.mini-note--4 { top: -16px; left: 7%; width: 34px; height: 34px; --base-rot: -9deg; animation-delay: 0.3s; }
+.mini-note--5 { top: -20px; right: 9%; width: 40px; height: 40px; --base-rot: 8deg; background: var(--coral); animation-delay: 1.4s; }
+.mini-note--6 { top: -14px; left: 62%; width: 30px; height: 30px; --base-rot: -12deg; background: var(--sky); animation-delay: 0.8s; }
+.mini-note--7 { top: -22px; left: 11%; width: 42px; height: 42px; --base-rot: 7deg; background: var(--green); animation-delay: 1.7s; }
+.mini-note--8 { top: -18px; right: 14%; width: 36px; height: 36px; --base-rot: -6deg; background: var(--yellow); animation-delay: 0.5s; }
 
 @keyframes sway {
   0%, 100% { transform: translateY(var(--py, 0px)) rotate(var(--base-rot, 0deg)); }
@@ -860,4 +880,83 @@ footer {
 @media (max-width: 400px) {
   .features__grid { grid-template-columns: 1fr; }
   .demo-note { width: 104px; }
+}
+
+/* ---------- تابلت: كل حاجة أكبر شوية وأاراحة أكتر، بردو عمود واحد ---------- */
+@media (min-width: 641px) {
+  .hero { padding: 90px 40px 60px; }
+  .hero__eyebrow { font-size: 0.88rem; }
+  .hero h1 { font-size: 3.4rem; }
+  .hero__tagline { font-size: 1.3rem; max-width: 560px; }
+  .trust-badges { max-width: 520px; }
+
+  .phone-mockup { width: 300px; }
+
+  main { max-width: 700px; padding: 32px 24px; }
+  .paper-card { padding: 60px 40px 42px; }
+  .features__grid { gap: 20px; }
+  .step-card { width: 220px; }
+}
+
+/* ---------- كمبيوتر: الهيرو يبقى عمودين، والموك أب يقعد جنب النص بدل تحته ---------- */
+@media (min-width: 1024px) {
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 64px;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 100px 48px 90px;
+    text-align: right;
+  }
+
+  .hero__text {
+    flex: 1 1 440px;
+    max-width: 480px;
+  }
+
+  .hero__visual {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero__tagline {
+    margin: 0 0 22px;
+    max-width: none;
+  }
+
+  .trust-badges {
+    justify-content: flex-start;
+    margin: 0 0 28px;
+    max-width: none;
+  }
+
+  .qr-area {
+    align-items: flex-start;
+  }
+
+  .qr-area__label {
+    margin: 0;
+  }
+
+  .phone-mockup { width: 320px; margin-top: 0; }
+
+  .hero__hint {
+    max-width: 300px;
+    text-align: center;
+  }
+
+  main { max-width: 860px; padding: 40px 32px; }
+
+  .features__grid { gap: 24px; }
+  .compare__grid { gap: 24px; }
+}
+
+/* شاشات كبيرة جدًا: نمنع المحتوى إنه يتمدد أكتر من اللازم */
+@media (min-width: 1440px) {
+  .hero { max-width: 1280px; }
+  main { max-width: 920px; }
 }
