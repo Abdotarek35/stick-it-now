@@ -149,6 +149,17 @@ body {
 .mini-note--7 { top: -22px; left: 11%; width: 42px; height: 42px; --base-rot: 7deg; background: var(--green); animation-delay: 1.7s; }
 .mini-note--8 { top: -18px; right: 14%; width: 36px; height: 36px; --base-rot: -6deg; background: var(--yellow); animation-delay: 0.5s; }
 
+/* أمان إضافي: نوتات الفجوات ليها حركة خاصة بيها متعتمدش على --py خالص،
+   عشان تفضل ثابتة مية بالمية أيًا كان اللي بيحصل مع أي كود سكرول */
+.note-gap .mini-note {
+  animation-name: swayFixed;
+}
+
+@keyframes swayFixed {
+  0%, 100% { transform: rotate(var(--base-rot, 0deg)); }
+  50% { transform: rotate(calc(var(--base-rot, 0deg) + 4deg)); }
+}
+
 @keyframes sway {
   0%, 100% { transform: translateY(var(--py, 0px)) rotate(var(--base-rot, 0deg)); }
   50% { transform: translateY(var(--py, 0px)) rotate(calc(var(--base-rot, 0deg) + 4deg)); }
@@ -736,63 +747,77 @@ h2 {
 .steps {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 34px;
   justify-content: center;
 }
 
 .step-card {
   position: relative;
-  background: #fff8e1;
+  background-color: #fff8e1;
+  background-image:
+    radial-gradient(circle at 20% 25%, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    radial-gradient(circle at 75% 70%, rgba(0, 0, 0, 0.025) 1px, transparent 1px);
+  background-size: 16px 16px, 20px 20px;
   border: 1px solid #f0dfa0;
   border-radius: 12px;
   padding: 30px 18px 24px;
   width: 200px;
   text-align: center;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
-  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.22);
 }
 
-.step-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(circle at 20% 25%, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-    radial-gradient(circle at 75% 70%, rgba(0, 0, 0, 0.025) 1px, transparent 1px);
-  background-size: 16px 16px, 20px 20px;
-  pointer-events: none;
-}
-
+/* دبوس ملوّن بدل شريط اللزق - كل كارت بلون دبوس يناسب لونه */
 .step-card::after {
   content: "";
   position: absolute;
-  top: -8px;
+  top: -9px;
   left: 50%;
-  width: 46px;
-  height: 18px;
-  background: rgba(255, 255, 255, 0.55);
-  border: 1px solid rgba(0, 0, 0, 0.04);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ffe28a, #d9a441 75%);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+  transform: translateX(-50%);
+  z-index: 2;
 }
 
-.step-card:nth-child(1)::after { transform: translateX(-50%) rotate(-4deg); }
+/* خط رحلة متقطع يوصل كل كارت باللي قبله - عمودي لما تكون الكروت فوق بعض،
+   وأفقي لما يبقوا صف واحد على الشاشات الأعرض */
+.step-card:not(:first-child)::before {
+  content: "";
+  position: absolute;
+  top: -26px;
+  left: 50%;
+  width: 0;
+  height: 18px;
+  border-inline-start: 2px dashed #c9973f;
+  transform: translateX(-50%);
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.step-card:nth-child(1) {
+  transform: rotate(-3deg);
+}
 
 .step-card:nth-child(2) {
-  background: #eef8f0;
+  background-color: #eef8f0;
   border-color: #cfe8d6;
-  transform: rotate(-1deg);
+  transform: rotate(2.5deg);
 }
-.step-card:nth-child(2)::after { transform: translateX(-50%) rotate(2deg); }
+.step-card:nth-child(2)::after { background: radial-gradient(circle at 35% 30%, #cdeed9, #4f9c6d 75%); }
 
 .step-card:nth-child(3) {
-  background: #fdeeee;
+  background-color: #fdeeee;
   border-color: #f3d4d4;
-  transform: rotate(1deg);
+  transform: rotate(-1.5deg);
 }
-.step-card:nth-child(3)::after { transform: translateX(-50%) rotate(-2deg); }
+.step-card:nth-child(3)::after { background: radial-gradient(circle at 35% 30%, #ffb3b3, #c0392b 75%); }
 
 .step-card:hover {
   transform: translateY(-6px) rotate(0deg);
-  box-shadow: 0 14px 22px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.26);
 }
 
 .step-card:active {
@@ -811,6 +836,20 @@ h2 {
   /* لون ثابت غامق - كروت الخطوات فاتحة دايمًا حتى في الوضع الليلي،
      فمينفعش النص ياخد لون المتغيّر اللي بيفتح في الوضع الليلي */
   color: #3a2f1a;
+}
+
+/* لما الكروت تقعد في صف واحد (الكمبيوتر)، الخط بيتحول لأفقي بين كل كارت واللي جنبه */
+@media (min-width: 1024px) {
+  .step-card:not(:first-child)::before {
+    top: 50%;
+    left: auto;
+    right: -26px;
+    width: 18px;
+    height: 0;
+    border-inline-start: none;
+    border-top: 2px dashed #c9973f;
+    transform: translateY(-50%);
+  }
 }
 
 /* ---------- FAQ ---------- */
@@ -953,6 +992,8 @@ footer {
 
   .features__grid { gap: 24px; }
   .compare__grid { gap: 24px; }
+
+  .step-card { width: 210px; }
 }
 
 /* شاشات كبيرة جدًا: نمنع المحتوى إنه يتمدد أكتر من اللازم */
