@@ -88,9 +88,8 @@ ctaObserver.observe(heroBtn);
 // ---------- الديمو التفاعلي: نوتات حقيقية تقدر تسحبها وتلوّنها وتكتب فيها ----------
 (function () {
   var phoneScreen = document.getElementById("phoneScreen");
-  var addBtn = document.getElementById("demoAddBtn");
   var toastEl = document.getElementById("demoToast");
-  if (!phoneScreen || !addBtn) return;
+  if (!phoneScreen || !toastEl) return;
 
   var DEMO_COLORS = ["#ffe066", "#a8d8b9", "#f7a1a1", "#a8c8e8"];
   var MAX_NOTES = 4;
@@ -116,10 +115,6 @@ ctaObserver.observe(heroBtn);
     el.style.zIndex = zCounter;
   }
 
-  function updateAddButtonState() {
-    addBtn.disabled = noteCount >= MAX_NOTES;
-  }
-
   function setupDrag(note, bar) {
     var dragging = false;
     var startLeft = 0;
@@ -128,7 +123,8 @@ ctaObserver.observe(heroBtn);
     var startY = 0;
 
     bar.addEventListener("pointerdown", function (e) {
-      if (e.target.closest(".demo-note__dot") || e.target.closest(".demo-note__close")) return;
+      if (e.target.closest(".demo-note__icon")) return;
+      if (note.dataset.locked === "true") return;
       dragging = true;
       bringToFront(note);
       note.classList.remove("is-settling");
@@ -171,7 +167,16 @@ ctaObserver.observe(heroBtn);
     bar.addEventListener("pointercancel", endDrag);
   }
 
-  function createDemoNote(startColorIndex) {
+  function makeIcon(className, label, glyph) {
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "demo-note__icon " + className;
+    btn.setAttribute("aria-label", label);
+    if (glyph) btn.textContent = glyph;
+    return btn;
+  }
+
+  function createDemoNote(startColorIndex, originNote) {
     if (noteCount >= MAX_NOTES) {
       showToast("وصلت لأقصى عدد نوتات في الديمو - اقفل واحدة عشان تضيف تانية");
       return null;
@@ -179,29 +184,34 @@ ctaObserver.observe(heroBtn);
 
     var note = document.createElement("div");
     note.className = "demo-note";
+    note.dataset.locked = "false";
 
     var bar = document.createElement("div");
     bar.className = "demo-note__bar";
 
-    var drag = document.createElement("div");
-    drag.className = "demo-note__drag";
+    // الترتيب من الشمال زي التطبيق بالظبط: قفل (✕) + إضافة (+) + لون (●) + تصغير (•) + قفل الحركة (M)
+    var close = makeIcon("demo-note__close", "اقفل النوتة", "✕");
+    var add = makeIcon("demo-note__add", "زوّد نوتة جنب دي", "+");
 
-    var dot = document.createElement("button");
-    dot.type = "button";
-    dot.className = "demo-note__dot";
-    dot.setAttribute("aria-label", "غيّر لون النوتة");
+    var dot = makeIcon("demo-note__dot", "غيّر لون النوتة", "");
     var dotSwatch = document.createElement("span");
     dot.appendChild(dotSwatch);
 
-    var close = document.createElement("button");
-    close.type = "button";
-    close.className = "demo-note__close";
-    close.setAttribute("aria-label", "اقفل النوتة");
-    close.textContent = "✕";
+    var minBtn = makeIcon("demo-note__min", "صغّرها لنقطة", "");
+    var minDot = document.createElement("span");
+    minBtn.appendChild(minDot);
 
-    bar.appendChild(drag);
-    bar.appendChild(dot);
+    var lockBtn = makeIcon("demo-note__lock", "اقفل حركة النوتة", "M");
+
+    var drag = document.createElement("div");
+    drag.className = "demo-note__drag";
+
     bar.appendChild(close);
+    bar.appendChild(add);
+    bar.appendChild(dot);
+    bar.appendChild(minBtn);
+    bar.appendChild(lockBtn);
+    bar.appendChild(drag);
 
     var body = document.createElement("div");
     body.className = "demo-note__body";
@@ -222,20 +232,49 @@ ctaObserver.observe(heroBtn);
 
     var screenRect = phoneScreen.getBoundingClientRect();
     var noteRect = note.getBoundingClientRect();
-    var cascade = (noteCount % MAX_NOTES) * 22;
-    var left = clamp(18 + cascade, 0, Math.max(0, screenRect.width - noteRect.width));
-    var top = clamp(118 + cascade, 0, Math.max(0, screenRect.height - noteRect.height));
+    var left, top;
+    if (originNote) {
+      var originLeft = parseFloat(originNote.style.left) || 0;
+      var originTop = parseFloat(originNote.style.top) || 0;
+      left = clamp(originLeft + 28, 0, Math.max(0, screenRect.width - noteRect.width));
+      top = clamp(originTop + 28, 0, Math.max(0, screenRect.height - noteRect.height));
+    } else {
+      left = clamp(20, 0, Math.max(0, screenRect.width - noteRect.width));
+      top = clamp(90, 0, Math.max(0, screenRect.height - noteRect.height));
+    }
     note.style.left = left + "px";
     note.style.top = top + "px";
 
     bringToFront(note);
     noteCount += 1;
-    updateAddButtonState();
 
     dot.addEventListener("click", function () {
       colorIndex = (colorIndex + 1) % DEMO_COLORS.length;
       applyColor();
       bringToFront(note);
+    });
+
+    add.addEventListener("click", function () {
+      createDemoNote(noteCount, note);
+    });
+
+    minBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      note.classList.add("is-minimized");
+      bringToFront(note);
+    });
+
+    note.addEventListener("click", function () {
+      if (note.classList.contains("is-minimized")) {
+        note.classList.remove("is-minimized");
+        bringToFront(note);
+      }
+    });
+
+    lockBtn.addEventListener("click", function () {
+      var locked = note.dataset.locked === "true";
+      note.dataset.locked = locked ? "false" : "true";
+      lockBtn.classList.toggle("is-active", !locked);
     });
 
     close.addEventListener("click", function () {
@@ -245,7 +284,6 @@ ctaObserver.observe(heroBtn);
         function () {
           note.remove();
           noteCount = Math.max(0, noteCount - 1);
-          updateAddButtonState();
         },
         { once: true }
       );
@@ -257,8 +295,4 @@ ctaObserver.observe(heroBtn);
 
   // نوتة بداية جاهزة للتجربة
   createDemoNote(0);
-
-  addBtn.addEventListener("click", function () {
-    createDemoNote(noteCount);
-  });
 })();
